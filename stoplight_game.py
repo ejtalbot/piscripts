@@ -1,3 +1,4 @@
+import random
 import RPi.GPIO as GPIO
 import time
 
@@ -24,11 +25,11 @@ class Light:
         print(f"Turning off {self}")
         GPIO.output(self.pin, 0)
 
-    def blink(self):
+    def blink(self, duration):
         self.turn_on()
-        time.sleep(.5)
+        time.sleep(duration)
         self.turn_off()
-        time.sleep(.5)
+        time.sleep(duration)
     
     def check_status(self):
         try:
@@ -60,8 +61,9 @@ class Board:
 
 def main():
     board = Board()
-    for pin, light in board.lights.items():
-        light.blink()
+    for i in range (10):
+        for pin, light in board.lights.items():
+            light.blink(.1*random.randint(1, 9))
     GPIO.cleanup()
 
 if __name__=="__main__":
