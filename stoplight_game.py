@@ -53,7 +53,8 @@ class Board:
         pin_color_mapping = {
             7: "red",
             11: "yellow",
-            13: "green"
+            13: "green",
+            40: "string"
         }
         for pin, color in pin_color_mapping.items():
             self.create_light(pin, color)
@@ -63,7 +64,8 @@ def main():
     board = Board()
     for i in range (10):
         for pin, light in board.lights.items():
-            light.blink(.1*random.randint(1, 9))
+            if pin == 40:
+                light.blink(1)
     GPIO.cleanup()
 
 if __name__=="__main__":
