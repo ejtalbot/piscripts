@@ -29,6 +29,7 @@ class Light:
         self.turn_on()
         time.sleep(duration)
         self.turn_off()
+        time.sleep(duration/2)
     
     def check_status(self):
         try:
@@ -61,7 +62,7 @@ class Board:
 
 def main():
     board = Board()
-    for i in range (10):
+    for i in range (20):
         for pin, light in board.lights.items():
             if pin == 7:
                 light.blink(1-.1*i)
