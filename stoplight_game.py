@@ -62,7 +62,7 @@ class Board:
 
 def main():
     board = Board()
-    for i in range (20):
+    for i in range (10):
         for pin, light in board.lights.items():
             if pin == 7:
                 light.blink(1-.1*i)
