@@ -29,7 +29,6 @@ class Light:
         self.turn_on()
         time.sleep(duration)
         self.turn_off()
-        time.sleep(duration)
     
     def check_status(self):
         try:
