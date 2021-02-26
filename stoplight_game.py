@@ -66,7 +66,7 @@ def main():
     for i in range (blink_count):
         for pin, light in board.lights.items():
             if pin == 7:
-                light.blink(.1*(blink_count - i) + .05)
+                light.blink(.05*(blink_count - i) + .05)
     GPIO.cleanup()
 
 if __name__=="__main__":
