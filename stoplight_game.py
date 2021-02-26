@@ -62,11 +62,11 @@ class Board:
 
 def main():
     board = Board()
-    blink_count = 20
+    blink_count = 30
     for i in range (blink_count):
         for pin, light in board.lights.items():
             if pin == 7:
-                light.blink(.05*(blink_count - i) + .05)
+                light.blink(i % 3 * .1)
     GPIO.cleanup()
 
 if __name__=="__main__":
