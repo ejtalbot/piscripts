@@ -15,7 +15,7 @@ def rand_rbg():
 for pix_num in range(max_pixel):
 	for blink in range(blinks):
 		pixels[pix_num] = rand_rbg()
-		time.sleep(.25)
+		time.sleep(.1)
 
 for pix_num in reversed(range(max_pixel)):
 	time.sleep(.1)
