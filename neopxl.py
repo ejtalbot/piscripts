@@ -10,7 +10,7 @@ def rand_rbg():
 	red = random.randint(0, 255)
 	green = random.randint(0, 255)
 	blue = random.randint(0, 255)
-	return tuple(red, green, blue)
+	return tuple((red, green, blue))
 
 for pix_num in range(max_pixel):
 	for blink in range(blinks):
