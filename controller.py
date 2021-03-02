@@ -34,9 +34,9 @@ class Board:
 		for pixel_number in range(self.count):
 			self.set_pixel_color(pixel_number, red, green, blue)
 			time.sleep(.1)
-			self.turn_off_pixel(pixel_number)
 
 board = Board()
 board.cycle(255, 0, 0)
 board.cycle(0, 255, 0)
 board.cycle(0, 0, 255)
+board.turn_off_all_pixels()
