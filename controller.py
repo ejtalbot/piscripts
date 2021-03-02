@@ -37,8 +37,20 @@ class Board:
 			self.pixels.show()
 			time.sleep(.1)
 
+	def offset_light(self, offset: int, start: int, red: int, green: int, blue: int):
+		for pixel_number in range(self.count):
+			if (pixel_number + start) % offset == 0:
+				self.set_pixel_color(pixel_number, red, green, blue)
+		self.pixels.show()
+		time.sleep(.5)
+
+
 board = Board()
-board.cycle(255, 0, 0)
-board.cycle(0, 255, 0)
-board.cycle(0, 0, 255)
+#board.cycle(255, 0, 0)
+#board.cycle(0, 255, 0)
+#board.cycle(0, 0, 255)
+for i in range(10):
+	board.offset_light(4, i, 255, 0, 0)
+	board.offset_light(4, i, 0, 255, 0)
+	board.offset_light(4, i, 0, 0, 255)
 board.turn_off_all_pixels()
