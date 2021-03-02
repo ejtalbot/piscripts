@@ -2,8 +2,8 @@ import board
 import neopixel
 import random
 import time
-pixels = neopixel.NeoPixel(board.D18, 30)
-max_pixel = 29
+pixels = neopixel.NeoPixel(board.D18, 60)
+max_pixel = 59
 blinks = 5
 
 def rand_rbg():
@@ -15,7 +15,7 @@ def rand_rbg():
 for pix_num in range(max_pixel):
 	for blink in range(blinks):
 		pixels[pix_num] = rand_rbg()
-		time.sleep(.1)
+		time.sleep(.2)
 
 for pix_num in reversed(range(max_pixel)):
 	time.sleep(.1)
