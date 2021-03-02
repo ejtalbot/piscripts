@@ -46,9 +46,9 @@ class Board:
 
 
 board = Board()
-#board.cycle(255, 0, 0)
-#board.cycle(0, 255, 0)
-#board.cycle(0, 0, 255)
+board.cycle(255, 0, 0)
+board.cycle(0, 255, 0)
+board.cycle(0, 0, 255)
 for i in range(10):
 	board.offset_light(3, i, 255, 0, 0)
 	board.offset_light(3, i+1, 0, 255, 0)
