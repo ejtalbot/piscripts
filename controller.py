@@ -51,6 +51,6 @@ board = Board()
 #board.cycle(0, 0, 255)
 for i in range(10):
 	board.offset_light(4, i, 255, 0, 0)
-	board.offset_light(4, i, 0, 255, 0)
-	board.offset_light(4, i, 0, 0, 255)
+	board.offset_light(4, i+1, 0, 255, 0)
+	board.offset_light(4, i+2, 0, 0, 255)
 board.turn_off_all_pixels()
