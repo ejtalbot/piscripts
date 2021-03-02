@@ -17,22 +17,22 @@ class Board:
 		self.count = count
 		self.pixels = neopixel.NeoPixel(board.__getattribute__(gpio), self.count)
 
-	def set_pixel_color(self, red: int, green: int, blue: int):
+	def set_pixel_color(self, pixel_number: int, red: int, green: int, blue: int):
 		if any(not(0<=color<=255) for color in {red, green, blue}):
 			print(f"invalid color outside rgb range: ({red, green, blue})")
 		else:
-			self.pixels[pix_num] = (red, green, blue)
+			self.pixels[pixel_number] = (red, green, blue)
 
 	def turn_off_pixel(self, pixel_number: int):
 		self.pixels[pixel_number] = (0, 0, 0)
 
 	def turn_off_all_pixels(self):
-		for pixel_number in self.count:
+		for pixel_number in range(self.count):
 			self.turn_off_pixel(pixel_number)
 
 	def cycle(self, red: int, green: int, blue: int):
-		for pixel_number in self.count:
-			self.set_pixel_color(red, green, blue)
+		for pixel_number in range(self.count):
+			self.set_pixel_color(pixel_number, red, green, blue)
 			time.sleep(.1)
 			self.turn_off_pixel(pixel_number)
 
