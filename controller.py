@@ -83,7 +83,6 @@ class Board:
 				green = min(255, current_pixel[0]+10)
 			else:
 				blue = min(255, current_pixel[0]+10)
-			print(pixel_number, red, green, blue)
 			self.set_pixel_color(pixel_number, red, green, blue)
 
 	def increase_all_primary(self, rgb: int):
@@ -98,6 +97,7 @@ class Board:
 
 
 board = Board()
+board.turn_off_all_pixels()
 board.increase_all_primary(0)
 board.fade_all_primary_to_black(0)
 board.increase_all_primary(1)
