@@ -89,7 +89,6 @@ class Board:
 		while any(
 			pixel for pixel in self.pixels if pixel[rgb] < 255
 		):
-			print([pixel for pixel in self.pixels if pixel[rgb] < 255])
 			for pixel_number in range(self.count):
 				self.primary_color_increase(pixel_number, rgb)
 			self.pixels.show()
