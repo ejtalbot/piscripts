@@ -67,7 +67,7 @@ class Board:
 			for pixel_number in range(self.count):
 				self.primary_color_fade(pixel_number, rgb)
 			self.pixels.show()
-			time.sleep(.1)
+			time.sleep(.5)
 
 	def primary_color_increase(self, pixel_number: int, rgb: int):
 		if rgb not in range(3):
@@ -94,7 +94,7 @@ class Board:
 			for pixel_number in range(self.count):
 				self.primary_color_increase(pixel_number, rgb)
 			self.pixels.show()
-			time.sleep(.1)
+			time.sleep(.5)
 
 
 board = Board()
