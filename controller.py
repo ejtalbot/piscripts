@@ -44,23 +44,6 @@ class Board:
 		self.pixels.show()
 		time.sleep(.5)
 
-	def color_fade(self, pixel_number: int, rgb: int):
-		# get the current color of the pixel
-		if rgb not in range(3):
-			print(f"invalid {rgb}")
-		else:
-			current_pixel = self.pixels[pixel_number]
-			red = current_pixel[0]
-			green = current_pixel[1]
-			blue = current_pixel[2]
-			if rgb == 0:
-				red = max(0, current_pixel[0]-10)
-			elif: rgb == 1:
-				green = max(0, current_pixel[0]-10)
-			else:
-				blue = max(0, current_pixel[0]-10)
-			self.set_pixel_color(pixel_number, red, green, blue)
-
 	def primary_color_fade(self, pixel_number: int, rgb: int):
 		if rgb not in range(3):
 			print(f"invalid {rgb}")
