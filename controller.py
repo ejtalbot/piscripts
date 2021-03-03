@@ -53,11 +53,11 @@ class Board:
 			green = current_pixel[1]
 			blue = current_pixel[2]
 			if rgb == 0:
-				red = max(0, current_pixel[0]-10)
+				red = max(0, current_pixel[0]-51)
 			elif rgb == 1:
-				green = max(0, current_pixel[0]-10)
+				green = max(0, current_pixel[0]-51)
 			else:
-				blue = max(0, current_pixel[0]-10)
+				blue = max(0, current_pixel[0]-51)
 			self.set_pixel_color(pixel_number, red, green, blue)
 
 	def fade_all_primary_to_black(self, rgb: int):
@@ -78,11 +78,11 @@ class Board:
 			green = current_pixel[1]
 			blue = current_pixel[2]
 			if rgb == 0:
-				red = min(255, current_pixel[0]+10)
+				red = min(255, current_pixel[0]+51)
 			elif rgb == 1:
-				green = min(255, current_pixel[0]+10)
+				green = min(255, current_pixel[0]+51)
 			else:
-				blue = min(255, current_pixel[0]+10)
+				blue = min(255, current_pixel[0]+51)
 			self.set_pixel_color(pixel_number, red, green, blue)
 
 	def increase_all_primary(self, rgb: int):
