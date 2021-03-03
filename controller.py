@@ -99,10 +99,10 @@ class Board:
 
 board = Board()
 board.increase_all_primary(0)
-board.increase_all_primary(1)
-board.increase_all_primary(2)
 board.fade_all_primary_to_black(0)
+board.increase_all_primary(1)
 board.fade_all_primary_to_black(1)
+board.increase_all_primary(2)
 board.fade_all_primary_to_black(2)
 #board.cycle(255, 0, 0)
 #board.cycle(0, 255, 0)
