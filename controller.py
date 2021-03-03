@@ -78,11 +78,11 @@ class Board:
 			green = current_pixel[1]
 			blue = current_pixel[2]
 			if rgb == 0:
-				red = min(0, current_pixel[0]+10)
+				red = min(255, current_pixel[0]+10)
 			elif rgb == 1:
-				green = min(0, current_pixel[0]+10)
+				green = min(255, current_pixel[0]+10)
 			else:
-				blue = min(0, current_pixel[0]+10)
+				blue = min(255, current_pixel[0]+10)
 			print(pixel_number, red, green, blue)
 			self.set_pixel_color(pixel_number, red, green, blue)
 
