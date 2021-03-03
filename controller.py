@@ -83,12 +83,14 @@ class Board:
 				green = min(0, current_pixel[0]+10)
 			else:
 				blue = min(0, current_pixel[0]+10)
+			print(pixel_number, red, green, blue)
 			self.set_pixel_color(pixel_number, red, green, blue)
 
 	def increase_all_primary(self, rgb: int):
 		while any(
 			pixel for pixel in self.pixels if pixel[rgb] < 255
 		):
+			print([pixel for pixel in self.pixels if pixel[rgb] < 255])
 			for pixel_number in range(self.count):
 				self.primary_color_increase(pixel_number, rgb)
 			self.pixels.show()
