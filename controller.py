@@ -71,7 +71,7 @@ class Board:
 			blue = current_pixel[2]
 			if rgb == 0:
 				red = max(0, current_pixel[0]-10)
-			elif: rgb == 1:
+			elif rgb == 1:
 				green = max(0, current_pixel[0]-10)
 			else:
 				blue = max(0, current_pixel[0]-10)
@@ -96,7 +96,7 @@ class Board:
 			blue = current_pixel[2]
 			if rgb == 0:
 				red = min(0, current_pixel[0]+10)
-			elif: rgb == 1:
+			elif rgb == 1:
 				green = min(0, current_pixel[0]+10)
 			else:
 				blue = min(0, current_pixel[0]+10)
