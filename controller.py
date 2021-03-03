@@ -62,7 +62,7 @@ class Board:
 
 	def fade_all_primary_to_black(self, rgb: int):
 		while any(
-			pixel for pixel in self.pixels[pixel_number] if pixel[rgb] > 0
+			pixel for pixel in self.pixels if pixel[rgb] > 0
 		):
 			for pixel_number in range(self.count):
 				self.primary_color_fade(pixel_number, rgb)
@@ -87,7 +87,7 @@ class Board:
 
 	def increase_all_primary(self, rgb: int):
 		while any(
-			pixel for pixel in self.pixels[pixel_number] if pixel[rgb] < 255
+			pixel for pixel in self.pixels if pixel[rgb] < 255
 		):
 			for pixel_number in range(self.count):
 				self.primary_color_increase(pixel_number, rgb)
