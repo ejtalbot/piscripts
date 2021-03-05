@@ -3,13 +3,8 @@ import neopixel
 import random
 import time
 
-#TODO color scheme mapping rgb
+from utils.csv_handler import read_to_dict_list  
 
-COLORS = {
-	"RED": (255, 0, 0),
-	"GREEN": (0, 255, 0),
-	"BLUE": (0, 0, 255)
-}
 
 class Board:
 	def __init__(self, gpio: str = "D18", count: int = 60):
@@ -94,15 +89,30 @@ class Board:
 			self.pixels.show()
 			time.sleep(.5)
 
+	def full_color_wheel(self):
+		# go to pixel 0, set it to first in color_dict_list
+		# move to pixel 1
+		# got to pixel 0 set to current color_dict_list
+		# go to pixel 1, set to next colormin color_dict_list
+		# go back to pixel 0
+		color_dict_list = read_to_dict_list("resources/colors.csv")
+		color_tuples = [tuple(color['rgb'].split(",") for color in color_dict_list)]
+		for color in color_tuples:
+			for pixel_number in reversed(range(1, self.count)):
+				# get the previous pixel = self.pixels[pixel_number - 1]
+				# usee conversion
+				#self.set_pixel_color(pixel_number, r, g, b)
+
+
 
 board = Board()
-#board.turn_off_all_pixels()
-#board.increase_all_primary(0)
-#board.fade_all_primary_to_black(0)
-#board.increase_all_primary(1)
-#board.fade_all_primary_to_black(1)
-#board.increase_all_primary(2)
-#board.fade_all_primary_to_black(2)
+board.turn_off_all_pixels()
+board.increase_all_primary(0)
+board.fade_all_primary_to_black(0)
+board.increase_all_primary(1)
+board.fade_all_primary_to_black(1)
+board.increase_all_primary(2)
+board.fade_all_primary_to_black(2)
 board.cycle(255, 0, 255)
 board.cycle(255, 255, 0)
 board.cycle(0, 255, 255)
