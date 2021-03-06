@@ -2,7 +2,7 @@ import board
 import neopixel
 import random
 import time
-from typing import List
+from typing import List, Tuple
 
 from utils.conversions import rgb_tuple_split
 from utils.csv_handler import read_to_dict_list  
@@ -109,7 +109,7 @@ class Board:
 			self.pixels.show()
 			time.sleep(.1)
 
-	def subset_color_wheel(self, colors: List[tuple(str, str, str)]):
+	def subset_color_wheel(self, colors: List[Tuple(str, str, str)]):
 		for i in range(10):
 			for pixel_number in range(self.count):
 				color_position = pixel_number % len(colors)
