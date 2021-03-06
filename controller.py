@@ -2,6 +2,7 @@ import board
 import neopixel
 import random
 import time
+from typing import List
 
 from utils.conversions import rgb_tuple_split
 from utils.csv_handler import read_to_dict_list  
