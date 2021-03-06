@@ -113,7 +113,7 @@ class Board:
 
 
 board = Board()
-print(self.get_pixel_color(0))
+print(board.get_pixel_color(0))
 """
 board.turn_off_all_pixels()
 board.increase_all_primary(0)
