@@ -104,7 +104,7 @@ class Board:
 		# go to pixel 1, set to next colormin color_dict_list
 		# go back to pixel 0
 		color_dict_list = read_to_dict_list("resources/colors.csv")
-		color_tuples = [tuple(color['rgb'].split(",") for color in color_dict_list)]
+		color_tuples = [tuple(color['rgb'].split(",")) for color in color_dict_list]
 		for color in color_tuples:
 			for pixel_number in reversed(range(1, self.count)):
 				# get the previous pixel = self.pixels[pixel_number - 1]
