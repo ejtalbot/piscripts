@@ -3,6 +3,7 @@ import neopixel
 import random
 import time
 
+from utils.conversions import rgb_tuple_split
 from utils.csv_handler import read_to_dict_list  
 
 
@@ -13,7 +14,7 @@ class Board:
 		self.pixels = neopixel.NeoPixel(board.__getattribute__(gpio), self.count, brightness=.2, auto_write=False)
 
 	def set_pixel_color(self, pixel_number: int, red: int, green: int, blue: int):
-		print(type(red))
+		print(red, green, blue)
 		print(type({red, green, blue}))
 		if any(not(0<=color<=255) for color in {red, green, blue}):
 			print(f"invalid color outside rgb range: ({red, green, blue})")
@@ -24,7 +25,7 @@ class Board:
 		return self.pixels[pixel_number]
 
 	def get_pixel_rgb(self, pixel_number: int):
-		return int(self.pixels[pixel_number][0]), int(self.pixels[pixel_number][1]), int(self.pixels[pixel_number][2])
+		return self.pixels[pixel_number][0], self.pixels[pixel_number][1], self.pixels[pixel_number][2]
 
 	def turn_off_pixel(self, pixel_number: int):
 		self.pixels[pixel_number] = (0, 0, 0)
@@ -113,7 +114,7 @@ class Board:
 				self.set_pixel_color(pixel_number -1, red, green, blue)
 			print(color)
 			print(type(color))
-			self.set_pixel_color(0, color[0], color[1], color[2])
+			self.set_pixel_color(0, rgb_tuple_split(color))
 				# usee conversion
 				#self.set_pixel_color(pixel_number, r, g, b)
 
