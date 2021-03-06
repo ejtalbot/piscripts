@@ -107,7 +107,7 @@ class Board:
 			for pixel_number in reversed(range(1, self.count)):
 				# get the previous pixel = self.pixels[pixel_number - 1]
 				red, green, blue = self.get_pixel_rgb(pixel_number)
-				print(red)
+				print(red, green, blue)
 				self.set_pixel_color(pixel_number -1, red, green, blue)
 			self.set_pixel_color(0, color[0], color[1], color[2])
 				# usee conversion
@@ -116,7 +116,6 @@ class Board:
 
 
 board = Board()
-print(board.get_pixel_color(0))
 board.full_color_wheel()
 board.turn_off_all_pixels()
 """
