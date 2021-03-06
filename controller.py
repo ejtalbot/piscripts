@@ -24,7 +24,7 @@ class Board:
 		return self.pixels[pixel_number]
 
 	def get_pixel_rgb(self, pixel_number: int):
-		return self.pixels[pixel_number][0], self.pixels[pixel_number][1], self.pixels[pixel_number][2]
+		return int(self.pixels[pixel_number][0]), int(self.pixels[pixel_number][1]), int(self.pixels[pixel_number][2])
 
 	def turn_off_pixel(self, pixel_number: int):
 		self.pixels[pixel_number] = (0, 0, 0)
