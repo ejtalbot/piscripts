@@ -113,7 +113,7 @@ class Board:
 		loop_count = 10
 		for i in range(loop_count):
 			for pixel_number in range(self.count):
-				color_position = (pixel_number + loop_count) % len(colors)
+				color_position = (pixel_number + i) % len(colors)
 				red, green, blue = rgb_tuple_split(colors[color_position])
 				self.set_pixel_color(pixel_number, red, green, blue)
 			self.pixels.show()
