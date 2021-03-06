@@ -13,6 +13,8 @@ class Board:
 		self.pixels = neopixel.NeoPixel(board.__getattribute__(gpio), self.count, brightness=.2, auto_write=False)
 
 	def set_pixel_color(self, pixel_number: int, red: int, green: int, blue: int):
+		print(red, green, blue)
+		print(type({red, green, blue}))
 		if any(not(0<=color<=255) for color in {red, green, blue}):
 			print(f"invalid color outside rgb range: ({red, green, blue})")
 		else:
