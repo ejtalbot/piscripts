@@ -18,6 +18,12 @@ class Board:
 		else:
 			self.pixels[pixel_number] = (red, green, blue)
 
+	def get_pixel_color(self, pixel_number: int):
+		print(self.pixels[pixel_number])
+		print(type(self.pixels[pixel_number]))
+		print(self.pixels[pixel_number].__dict__)
+		return self.pixels[pixel_number]
+
 	def turn_off_pixel(self, pixel_number: int):
 		self.pixels[pixel_number] = (0, 0, 0)
 
@@ -100,12 +106,15 @@ class Board:
 		for color in color_tuples:
 			for pixel_number in reversed(range(1, self.count)):
 				# get the previous pixel = self.pixels[pixel_number - 1]
+				self.set_pixel_color(pixel_number -1, red, green, blue)
 				# usee conversion
 				#self.set_pixel_color(pixel_number, r, g, b)
 
 
 
 board = Board()
+print(self.get_pixel_color(0))
+"""
 board.turn_off_all_pixels()
 board.increase_all_primary(0)
 board.fade_all_primary_to_black(0)
@@ -120,4 +129,5 @@ for i in range(10):
 	board.offset_light(3, i, 255, 0, 255)
 	board.offset_light(3, i+1, 255, 255, 0)
 	board.offset_light(3, i+2, 0, 255, 255)
+"""
 board.turn_off_all_pixels()
