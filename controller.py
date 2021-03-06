@@ -14,8 +14,6 @@ class Board:
 		self.pixels = neopixel.NeoPixel(board.__getattribute__(gpio), self.count, brightness=.2, auto_write=False)
 
 	def set_pixel_color(self, pixel_number: int, red: int, green: int, blue: int):
-		print(red, green, blue)
-		print(type({red, green, blue}))
 		if any(not(0<=color<=255) for color in {red, green, blue}):
 			print(f"invalid color outside rgb range: ({red, green, blue})")
 		else:
@@ -109,11 +107,11 @@ class Board:
 		for color in color_tuples:
 			for pixel_number in reversed(range(1, self.count)):
 				# get the previous pixel = self.pixels[pixel_number - 1]
-				red, green, blue = self.get_pixel_rgb(pixel_number)
-				print(red, green, blue)
-				self.set_pixel_color(pixel_number -1, red, green, blue)
+				red, green, blue = self.get_pixel_rgb(pixel_number-1)
+				self.set_pixel_color(pixel_number, red, green, blue)
 			red, green, blue = rgb_tuple_split(color)
 			self.set_pixel_color(0, red, green, blue)
+			time.sleep(.1)
 				# usee conversion
 				#self.set_pixel_color(pixel_number, r, g, b)
 
