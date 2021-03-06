@@ -111,6 +111,8 @@ class Board:
 				red, green, blue = self.get_pixel_rgb(pixel_number)
 				print(red, green, blue)
 				self.set_pixel_color(pixel_number -1, red, green, blue)
+			print(color)
+			print(type(color))
 			self.set_pixel_color(0, color[0], color[1], color[2])
 				# usee conversion
 				#self.set_pixel_color(pixel_number, r, g, b)
