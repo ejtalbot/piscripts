@@ -21,7 +21,8 @@ class Board:
 	def get_pixel_color(self, pixel_number: int):
 		print(self.pixels[pixel_number])
 		print(type(self.pixels[pixel_number]))
-		print(self.pixels[pixel_number].__dict__)
+		print(self.pixels[pixel_number][0])
+		print(type(self.pixels[pixel_number][0]))
 		return self.pixels[pixel_number]
 
 	def turn_off_pixel(self, pixel_number: int):
