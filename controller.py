@@ -109,7 +109,7 @@ class Board:
 			self.pixels.show()
 			time.sleep(.1)
 
-	def subset_color_wheel(self, colors: List[Tuple(str, str, str)]):
+	def subset_color_wheel(self, colors: List[Tuple[str, str, str]]):
 		for i in range(10):
 			for pixel_number in range(self.count):
 				color_position = pixel_number % len(colors)
