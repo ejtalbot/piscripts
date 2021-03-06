@@ -117,7 +117,7 @@ class Board:
 				red, green, blue = rgb_tuple_split(colors[color_position])
 				self.set_pixel_color(pixel_number, red, green, blue)
 			self.pixels.show()
-			time.sleep(.1 + .1*(i % loop_count))
+			time.sleep(.1 + .1*(i % 3))
 
 
 board = Board()
