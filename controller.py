@@ -121,7 +121,7 @@ class Board:
 
 
 board = Board()
-board.subset_color_wheel([(255,0,0), (0,255,0), (0,0,255)])
+board.subset_color_wheel([(255,0,127), (239,187,204), (235,76,66)])
 #board.full_color_wheel()
 board.turn_off_all_pixels()
 """
