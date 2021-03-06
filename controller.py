@@ -106,18 +106,12 @@ class Board:
 		color_tuples = [tuple(color['rgb'].split(",")) for color in color_dict_list]
 		for color in color_tuples:
 			for pixel_number in reversed(range(1, self.count)):
-				print(pixel_number)
-				# get the previous pixel = self.pixels[pixel_number - 1]
 				red, green, blue = self.get_pixel_rgb(pixel_number-1)
 				self.set_pixel_color(pixel_number, red, green, blue)
 			red, green, blue = rgb_tuple_split(color)
 			self.set_pixel_color(0, red, green, blue)
 			self.pixels.show()
 			time.sleep(.1)
-				# usee conversion
-				#self.set_pixel_color(pixel_number, r, g, b)
-
-
 
 board = Board()
 board.full_color_wheel()
