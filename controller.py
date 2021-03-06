@@ -120,9 +120,9 @@ class Board:
 
 
 board = Board()
-#board.full_color_wheel()
+board.full_color_wheel()
 board.turn_off_all_pixels()
-
+"""
 board.increase_all_primary(0)
 board.fade_all_primary_to_black(0)
 board.increase_all_primary(1)
@@ -136,5 +136,5 @@ for i in range(10):
 	board.offset_light(3, i, 255, 0, 255)
 	board.offset_light(3, i+1, 255, 255, 0)
 	board.offset_light(3, i+2, 0, 255, 255)
-
+"""
 board.turn_off_all_pixels()
