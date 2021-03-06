@@ -97,11 +97,6 @@ class Board:
 			time.sleep(.5)
 
 	def full_color_wheel(self):
-		# go to pixel 0, set it to first in color_dict_list
-		# move to pixel 1
-		# got to pixel 0 set to current color_dict_list
-		# go to pixel 1, set to next colormin color_dict_list
-		# go back to pixel 0
 		color_dict_list = read_to_dict_list("resources/colors.csv")
 		color_tuples = [tuple(color['rgb'].split(",")) for color in color_dict_list]
 		for color in color_tuples:
@@ -113,8 +108,19 @@ class Board:
 			self.pixels.show()
 			time.sleep(.1)
 
+	def subset_color_wheel(self, colors: List[tuple(str, str, str)]):
+		for i in range(10):
+			for pixel_number in range(self.count):
+				color_position = pixel_number % len(colors)
+				red, green, blue = rgb_tuple_split(colors[color_position])
+				self.set_pixel_color(pixel_number, red, green, blue)
+			self.pixels.show()
+			time.sleep(.5)
+
+
 board = Board()
-board.full_color_wheel()
+board.subset_color_wheel([(255,0,0), (0,255,0), (0,0,255)])
+#board.full_color_wheel()
 board.turn_off_all_pixels()
 """
 board.increase_all_primary(0)
