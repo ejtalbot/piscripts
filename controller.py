@@ -180,10 +180,11 @@ board.cycle(255, 0, 255)
 board.cycle(255, 255, 0)
 board.cycle(0, 255, 255)
 """
-board.snake((255, 255, 0),5)
+board.multicolor_snake((255, 0, 0), (0,255,0), (0,0,255))
+"""
 for i in range(10):
 	board.offset_light(3, i, 255, 0, 255)
 	board.offset_light(3, i+1, 255, 255, 0)
 	board.offset_light(3, i+2, 0, 255, 255)
-
+"""
 board.turn_off_all_pixels()
