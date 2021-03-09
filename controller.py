@@ -41,11 +41,17 @@ class Board:
 			time.sleep(.1)
 
 	def offset_light(self, offset: int, start: int, red: int, green: int, blue: int):
-		for pixel_number in range(self.count):
-			if (pixel_number + start) % offset == 0:
-				self.set_pixel_color(pixel_number, red, green, blue)
+		for pixel_number in range(start, self.max_step(start, self.count, offset), offset):
+			self.set_pixel_color(pixel_number, red, green, blue)
 		self.pixels.show()
 		time.sleep(.5)
+
+	@staticmethod
+	def max_step(start: int, max_count: int, divisor: int):
+		max_plus_start_quotient = (start + max_count) // divisor
+		max_quotient = max_count // divisor
+		step_adjustment = (max_plus_start_quotient - max_quotient) * divisor
+		return start + max_count - step_adjustment
 
 	def primary_color_fade(self, pixel_number: int, rgb: int):
 		if rgb not in range(3):
@@ -110,7 +116,7 @@ class Board:
 			time.sleep(.1)
 
 	def subset_color_wheel(self, colors: List[Tuple[str, str, str]]):
-		loop_count = 100
+		loop_count = 10
 		for i in range(loop_count):
 			for pixel_number in range(self.count):
 				color_position = (pixel_number + i) % len(colors)
@@ -121,10 +127,11 @@ class Board:
 
 
 board = Board()
-board.subset_color_wheel([(255,0,127), (239,187,204), (235,76,66)])
-#board.full_color_wheel()
-board.turn_off_all_pixels()
 """
+board.subset_color_wheel([(255,0,127), (239,187,204), (235,76,66)])
+board.full_color_wheel()
+board.turn_off_all_pixels()
+
 board.increase_all_primary(0)
 board.fade_all_primary_to_black(0)
 board.increase_all_primary(1)
@@ -134,9 +141,10 @@ board.fade_all_primary_to_black(2)
 board.cycle(255, 0, 255)
 board.cycle(255, 255, 0)
 board.cycle(0, 255, 255)
+"""
 for i in range(10):
 	board.offset_light(3, i, 255, 0, 255)
 	board.offset_light(3, i+1, 255, 255, 0)
 	board.offset_light(3, i+2, 0, 255, 255)
-"""
+
 board.turn_off_all_pixels()
