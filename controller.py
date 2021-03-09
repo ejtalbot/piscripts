@@ -125,6 +125,23 @@ class Board:
 			self.pixels.show()
 			time.sleep(.1 + .1*(i % 3))
 
+	def snake(self, color: Tuple[str, str, str], length: int):
+		red, green, blue = rgb_tuple_split(color)
+		loop_count = 80
+		start = 0
+		end = length
+		for pixel in range(start, length + 1):
+			self.set_pixel_color(pixel_number, red, green, blue)
+		self.pixels.show()
+		time.sleep(.1)
+		dividend = self.count + 1
+		for i in loop_count:
+			self.turn_off_pixel(start)
+			start = (start + 1) % dividend
+			end = (end + 1) % dividend
+			self.set_pixel_color(end, red, green, blue)
+			self.pixels.show()
+			time.sleep(.1)
 
 board = Board()
 """
@@ -142,6 +159,7 @@ board.cycle(255, 0, 255)
 board.cycle(255, 255, 0)
 board.cycle(0, 255, 255)
 """
+board.snake((255, 255, 0),5)
 for i in range(10):
 	board.offset_light(3, i, 255, 0, 255)
 	board.offset_light(3, i+1, 255, 255, 0)
