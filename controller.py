@@ -145,14 +145,9 @@ class Board:
 
 	def multicolor_snake(self, colors: List[Tuple[str, str, str]]):
 		# red, green, blue = rgb_tuple_split(color)
-		loop_count = 1 # TODO make a while loop
+		loop_count = 100 # TODO make a while loop
 		start = -1
 		end = len(colors) -1
-		#for pixel in range(start, len(colors)):
-		#	red, green, blue = rgb_tuple_split(colors[pixel])
-		#	self.set_pixel_color(pixel, red, green, blue)
-		#self.pixels.show()
-		#time.sleep(.1)
 		for i in range(loop_count):
 			self.turn_off_pixel(start)
 			start = (start + 1) % self.count
