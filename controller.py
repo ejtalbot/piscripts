@@ -134,13 +134,11 @@ class Board:
 			self.set_pixel_color(pixel, red, green, blue)
 		self.pixels.show()
 		time.sleep(.1)
-		dividend = self.count + 1
+		dividend = self.count
 		for i in range(loop_count):
-			print(i, start, end)
 			self.turn_off_pixel(start)
 			start = (start + 1) % dividend
-			end = (end + 1) % dividend
-			print(i, start, end)
+			end = ((end + 1) % dividend)
 			self.set_pixel_color(end, red, green, blue)
 			self.pixels.show()
 			time.sleep(.1)
