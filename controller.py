@@ -4,7 +4,7 @@ import random
 import time
 from typing import List, Tuple
 
-from utils.conversions import rgb_tuple_split
+from utils.conversions import rgb_tuple_split, lengthen_sequence
 from utils.csv_handler import read_to_dict_list, read_to_color_name_dict
 
 
@@ -184,7 +184,7 @@ board.cycle(255, 255, 0)
 board.cycle(0, 255, 255)
 """
 colors = board.create_color_pattern_by_name(["red", "orange_color_wheel", "yellow", "electric_green", "blue", "violet"])
-board.multicolor_snake(colors)
+board.multicolor_snake(lengthen_sequence(colors))
 """
 for i in range(10):
 	board.offset_light(3, i, 255, 0, 255)
