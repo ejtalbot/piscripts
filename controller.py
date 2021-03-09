@@ -159,7 +159,7 @@ class Board:
 			self.turn_off_pixel(start)
 			start = (start + 1) % self.count
 			end = ((end + 1) % self.count)
-			for snake_position, pixel in enumerate(range(start, start + len(colors) + 1)):
+			for snake_position, pixel in enumerate(range(start, start + len(colors))):
 				current_pixel = pixel if pixel < self.count else (pixel + 1) % self.count
 				red, green, blue = rgb_tuple_split(colors[snake_position])
 				self.set_pixel_color(current_pixel, red, green, blue)
