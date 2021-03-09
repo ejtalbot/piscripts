@@ -136,6 +136,7 @@ class Board:
 		time.sleep(.1)
 		dividend = self.count + 1
 		for i in range(loop_count):
+			print(i, start, end)
 			self.turn_off_pixel(start)
 			start = (start + 1) % dividend
 			end = (end + 1) % dividend
