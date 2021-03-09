@@ -183,8 +183,8 @@ board.cycle(255, 0, 255)
 board.cycle(255, 255, 0)
 board.cycle(0, 255, 255)
 """
-print(board.create_color_pattern_by_name(["red", "orange", "yellow", "green", "blue", "violet"]))
-board.multicolor_snake([(255, 0, 0), (0,255,0), (0,0,255)])
+colors = board.create_color_pattern_by_name(["red", "orange_color_wheel", "yellow", "electric_green", "blue", "violet"])
+board.multicolor_snake(colors)
 """
 for i in range(10):
 	board.offset_light(3, i, 255, 0, 255)
