@@ -149,6 +149,8 @@ class Board:
 		start = 0
 		end = len(colors)
 		for pixel in range(start, len(colors)):
+			print(pixel)
+			print(colors)
 			red, green, blue = rgb_tuple_split(colors[pixel])
 			self.set_pixel_color(pixel, red, green, blue)
 		self.pixels.show()
