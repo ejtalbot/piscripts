@@ -143,7 +143,7 @@ class Board:
 			self.pixels.show()
 			time.sleep(.1)
 
-	def multicolor_snake(self, colors: List(Tuple[str, str, str])):
+	def multicolor_snake(self, colors: List[Tuple[str, str, str]]):
 		# red, green, blue = rgb_tuple_split(color)
 		loop_count = 80 # TODO make a while loop
 		start = 0
