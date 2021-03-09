@@ -131,7 +131,7 @@ class Board:
 		start = 0
 		end = length
 		for pixel in range(start, length + 1):
-			self.set_pixel_color(pixel_number, red, green, blue)
+			self.set_pixel_color(pixel, red, green, blue)
 		self.pixels.show()
 		time.sleep(.1)
 		dividend = self.count + 1
