@@ -148,7 +148,7 @@ class Board:
 		loop_count = 80 # TODO make a while loop
 		start = 0
 		end = len(colors)
-		for pixel in range(start, len(colors) + 1):
+		for pixel in range(start, len(colors)):
 			red, green, blue = rgb_tuple_split(colors[pixel])
 			self.set_pixel_color(pixel, red, green, blue)
 		self.pixels.show()
