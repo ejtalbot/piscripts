@@ -127,7 +127,7 @@ class Board:
 
 	def snake(self, color: Tuple[str, str, str], length: int):
 		red, green, blue = rgb_tuple_split(color)
-		loop_count = 80
+		loop_count = 80 # TODO make a while loop
 		start = 0
 		end = length
 		for pixel in range(start, length + 1):
@@ -137,9 +137,30 @@ class Board:
 		dividend = self.count
 		for i in range(loop_count):
 			self.turn_off_pixel(start)
-			start = (start + 1) % dividend
-			end = ((end + 1) % dividend)
+			start = (start + 1) % self.count
+			end = ((end + 1) % self.count)
 			self.set_pixel_color(end, red, green, blue)
+			self.pixels.show()
+			time.sleep(.1)
+
+	def multicolor_snake(self, colors: List(Tuple[str, str, str])):
+		# red, green, blue = rgb_tuple_split(color)
+		loop_count = 80 # TODO make a while loop
+		start = 0
+		end = len(colors)
+		for pixel in range(start, len(colors) + 1):
+			red, green, blue = rgb_tuple_split(colors[pixel])
+			self.set_pixel_color(pixel, red, green, blue)
+		self.pixels.show()
+		time.sleep(.1)
+		for i in range(loop_count):
+			self.turn_off_pixel(start)
+			start = (start + 1) % self.count
+			end = ((end + 1) % self.count)
+			for snake_position, pixel in enumerate(range(start, start + len(colors) + 1)):
+				current_pixel = pixel if pixel < self.count else (pixel + 1) % self.count
+				red, green, blue = rgb_tuple_split(colors[snake_position])
+				self.set_pixel_color(current_pixel, red, green, blue)
 			self.pixels.show()
 			time.sleep(.1)
 
