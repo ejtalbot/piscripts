@@ -4,7 +4,7 @@ import random
 import time
 from typing import List, Tuple
 
-from utils.conversions import rgb_tuple_split, lengthen_sequence
+from utils.conversions import rgb_tuple_split, lengthen_sequence, create_color_pattern_by_name
 from utils.csv_handler import read_to_dict_list, read_to_color_name_dict
 
 
@@ -159,14 +159,6 @@ class Board:
 			self.pixels.show()
 			time.sleep(.1)
 
-	def create_color_pattern_by_name(self, color_names: List[str]) -> List[Tuple[str,str,str]]:
-		"""Gte a color pattern based on names passed in list"""
-		pattern_rgb_colors = list()
-		color_name_dict = read_to_color_name_dict('resources/colors.csv')
-		for color in color_names:
-			pattern_rgb_colors.append(color_name_dict.get(color, (0,0,0)))
-		return pattern_rgb_colors
-
 board = Board()
 """
 board.subset_color_wheel([(255,0,127), (239,187,204), (235,76,66)])
@@ -183,8 +175,8 @@ board.cycle(255, 0, 255)
 board.cycle(255, 255, 0)
 board.cycle(0, 255, 255)
 """
-colors = board.create_color_pattern_by_name(["red", "orange_color_wheel", "yellow", "electric_green", "blue", "violet"])
-board.multicolor_snake(lengthen_sequence(colors, 2))
+rainbow_colors = create_color_pattern_by_name(["red", "orange_color_wheel", "yellow", "electric_green", "blue", "violet"])
+board.multicolor_snake(lengthen_sequence(rainbow_colors, 2))
 """
 for i in range(10):
 	board.offset_light(3, i, 255, 0, 255)
