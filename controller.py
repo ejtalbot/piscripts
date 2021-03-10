@@ -156,8 +156,15 @@ class Board:
 				current_pixel = pixel if pixel < self.count else (pixel + 1) % self.count
 				red, green, blue = rgb_tuple_split(colors[snake_position])
 				self.set_pixel_color(current_pixel, red, green, blue)
+				self.light_all_off_pixels()
 			self.pixels.show()
 			time.sleep(.1)
+
+	def light_all_off_pixels(self):
+		for pixel_number, pixel in enumerate(self.pixels):
+			if pixel == [(0, 0, 0)]:
+				self.set_pixel_color(pixel_number, 255, 255, 255)
+
 
 board = Board()
 
