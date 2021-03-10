@@ -28,5 +28,6 @@ def create_color_pattern_by_name(color_names: List[str]) -> List[Tuple[str,str,s
 		)
 	)
 	for color in color_names:
+		print(color)
 		pattern_rgb_colors.append(color_name_dict.get(color, (0,0,0)))
 	return pattern_rgb_colors
