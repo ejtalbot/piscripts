@@ -162,8 +162,8 @@ class Board:
 
 	def light_all_off_pixels(self):
 		for pixel_number, pixel in enumerate(self.pixels):
-			print(pixel_number, pixel)
-			if pixel == [(0, 0, 0)]:
+			#print(pixel_number, pixel)
+			if pixel == [0, 0, 0]:
 				print(f"found {pixel}")
 				self.set_pixel_color(pixel_number, 255, 255, 255)
 
