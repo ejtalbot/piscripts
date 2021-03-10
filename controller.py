@@ -173,7 +173,7 @@ class Board:
 			if pixel == [0, 0, 0]:
 				self.set_pixel_color(pixel_number, rgb[0], rgb[1], rgb[2])
 
-	def set_range_of_pixels(self, start: int, stop: int, color: Tuple[str, str, str] inside: bool = True):
+	def set_range_of_pixels(self, start: int, stop: int, color: Tuple[str, str, str], inside: bool = True):
 		red, green, blue = rgb_tuple_split(color)
 		if inside:
 			for pixel_number in range(start, stop + 1):
