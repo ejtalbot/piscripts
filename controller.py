@@ -160,10 +160,10 @@ class Board:
 			self.pixels.show()
 			time.sleep(.1)
 
-	def light_all_off_pixels(self):
+	def light_all_off_pixels(self, rgb: Tuple[int, int, int] = (255, 255, 255)):
 		for pixel_number, pixel in enumerate(self.pixels):
 			if pixel == [0, 0, 0]:
-				self.set_pixel_color(pixel_number, 255, 255, 255)
+				self.set_pixel_color(pixel_number, rbg[0], rgb[1], rgb[2])
 
 
 board = Board()
