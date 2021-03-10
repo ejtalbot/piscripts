@@ -156,7 +156,7 @@ class Board:
 				current_pixel = pixel if pixel < self.count else (pixel + 1) % self.count
 				red, green, blue = rgb_tuple_split(colors[snake_position])
 				self.set_pixel_color(current_pixel, red, green, blue)
-				self.light_all_off_pixels(tuple(255, 0, 0))
+				self.light_all_off_pixels((255, 0, 0))
 			self.pixels.show()
 			time.sleep(.1)
 
