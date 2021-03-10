@@ -160,11 +160,11 @@ class Board:
 			time.sleep(.1)
 
 board = Board()
-"""
-board.subset_color_wheel([(255,0,127), (239,187,204), (235,76,66)])
+
+oard.subset_color_wheel([(255,0,127), (239,187,204), (235,76,66)])
 board.full_color_wheel()
 board.turn_off_all_pixels()
-
+"""
 board.increase_all_primary(0)
 board.fade_all_primary_to_black(0)
 board.increase_all_primary(1)
