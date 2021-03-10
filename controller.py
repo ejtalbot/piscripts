@@ -176,6 +176,7 @@ def rainbow_snake_background_cycle():
 	rainbow_colors = create_color_pattern_by_name(rainbow_color_names)
 	board.multicolor_snake(
 		rainbow_colors,
+		crawl_length=100,
 		pattern_increase_factor=2
 	)
 	board.turn_off_all_pixels()
