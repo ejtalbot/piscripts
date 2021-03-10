@@ -33,3 +33,6 @@ def create_color_pattern_by_name(color_names: List[str]) -> List[Tuple[str,str,s
 
 def convert_strings_in_tuple_to_ints(rgb_tuple: Tuple[str, str, str]):
 	return (int(rgb_tuple[0]), int(rgb_tuple[1]), int(rgb_tuple[2]))
+
+def modulo_position_in_count(position: int, count: int):
+	return position if position < count else (pixel + 1) % count

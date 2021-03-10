@@ -4,7 +4,7 @@ import random
 import time
 from typing import List, Tuple
 
-from utils.conversions import rgb_tuple_split, lengthen_sequence, create_color_pattern_by_name, convert_strings_in_tuple_to_ints
+from utils.conversions import rgb_tuple_split, lengthen_sequence, create_color_pattern_by_name, convert_strings_in_tuple_to_ints, modulo_position_in_count
 from utils.csv_handler import read_to_dict_list, read_to_color_name_dict
 
 
@@ -153,15 +153,18 @@ class Board:
 		start = -1
 		end = len(pattern) -1
 		for background_rgb in pattern_base:
+			self.set_range_of_pixels(start, start + len(pattern), rgb_tuple_split(background_rgb), inside = False)
 			for i in range(crawl_length):
-				self.turn_off_all_pixels()
+				#self.turn_off_pixel(start)
+				background_red, background_green, background_blue = rgb_tuple_split(background_rgb)
+				self.set_pixel_color(start, background_red, background_green, background_blue)
 				start = (start + 1) % self.count
 				end = ((end + 1) % self.count)
 				for snake_position, pixel in enumerate(range(start, start + len(pattern))):
 					current_pixel = pixel if pixel < self.count else (pixel + 1) % self.count
 					red, green, blue = rgb_tuple_split(pattern[snake_position])
 					self.set_pixel_color(current_pixel, red, green, blue)
-					self.light_all_off_pixels(convert_strings_in_tuple_to_ints(background_rgb))
+					#self.light_all_off_pixels(convert_strings_in_tuple_to_ints(background_rgb))
 				self.pixels.show()
 				time.sleep(.1)
 
@@ -169,6 +172,18 @@ class Board:
 		for pixel_number, pixel in enumerate(self.pixels):
 			if pixel == [0, 0, 0]:
 				self.set_pixel_color(pixel_number, rgb[0], rgb[1], rgb[2])
+
+	def set_range_of_pixels(self, start: int, stop: int, color: Tuple[str, str, str] inside: bool = True):
+		red, green, blue = rgb_tuple_split(color)
+		if inside:
+			for pixel_number in range(start, stop + 1):
+				self.set_pixel_color(modulo_position_in_count(pixel_number, red, green, blue))
+		else:
+			for pixel_number in range(0, start):
+				self.set_pixel_color(modulo_position_in_count(pixel_number, red, green, blue))
+			for pixel_number in range(stop, self.count):
+				self.set_pixel_color(modulo_position_in_count(pixel_number, red, green, blue))
+
 
 def rainbow_snake_background_cycle():
 	board = Board()
