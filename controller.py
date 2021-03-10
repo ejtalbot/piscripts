@@ -154,7 +154,7 @@ class Board:
 		end = len(pattern) -1
 		for background_rgb in pattern_base:
 			for i in range(crawl_length):
-				self.turn_off_pixel(start)
+				board.turn_off_all_pixels()
 				start = (start + 1) % self.count
 				end = ((end + 1) % self.count)
 				for snake_position, pixel in enumerate(range(start, start + len(pattern))):
