@@ -177,12 +177,12 @@ class Board:
 		red, green, blue = rgb_tuple_split(color)
 		if inside:
 			for pixel_number in range(start, stop + 1):
-				self.set_pixel_color(modulo_position_in_count(pixel_number), red, green, blue)
+				self.set_pixel_color(modulo_position_in_count(pixel_number, self.count), red, green, blue)
 		else:
 			for pixel_number in range(0, start):
-				self.set_pixel_color(modulo_position_in_count(pixel_number), red, green, blue)
+				self.set_pixel_color(modulo_position_in_count(pixel_number, self.count), red, green, blue)
 			for pixel_number in range(stop, self.count):
-				self.set_pixel_color(modulo_position_in_count(pixel_number), red, green, blue)
+				self.set_pixel_color(modulo_position_in_count(pixel_number, self.count), red, green, blue)
 
 
 def rainbow_snake_background_cycle():
