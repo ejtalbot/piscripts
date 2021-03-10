@@ -30,3 +30,6 @@ def create_color_pattern_by_name(color_names: List[str]) -> List[Tuple[str,str,s
 	for color in color_names:
 		pattern_rgb_colors.append(color_name_dict.get(color, (0,0,0)))
 	return pattern_rgb_colors
+
+def convert_strings_in_tuple_to_ints(rgb_tuple: Tuple[str, str, str]):
+	return (int(rgb_tuple[0]), int(rgb_tuple[1]), int(rgb_tuple[2]))
