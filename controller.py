@@ -152,8 +152,7 @@ class Board:
 	):
 		snake = Snake(0, pattern_base, self.count, lengthen_sequence_by=pattern_increase_factor, reverse=True)
 		for background_rgb in pattern_base:
-			print(background_rgb)
-			# uncomment if snake doesnt fill entire
+			# can comment if snake fills entire
 			self.set_range_of_pixels(snake.start, snake.start + len(snake.pattern), rgb_tuple_split(background_rgb), inside = False)
 			for i in range(crawl_length):
 				background_red, background_green, background_blue = rgb_tuple_split(background_rgb)
