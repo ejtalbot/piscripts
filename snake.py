@@ -17,10 +17,10 @@ class Snake:
 
 	def move(self, steps: int, backwards: bool = False):
 		if backwards:
-			self.start = (self.start - step) % board_length
+			self.start = (self.start - steps) % board_length
 		else:
-			self.start = (self.start + step) % board_length
+			self.start = (self.start + steps) % board_length
 
 	def iteration(self, func):
-		for position, pixel in enumerate(range(start, len(self.pattern + start))):
+		for position, pixel in enumerate(range(self.start, len(self.pattern + start))):
 			func(position, pixel if pixel < self.count else (pixel + 1) % self.count)
