@@ -150,21 +150,14 @@ class Board:
 		crawl_length: int = 60,
 		pattern_increase_factor: int = 1
 	):
-		snake = Snake(0, pattern_base, self.count)
-		#pattern = lengthen_sequence(pattern_base, pattern_increase_factor)
-		start = -1
-		#end = len(pattern) -1
+		snake = Snake(0, pattern_base, self.count, lengthen_sequence_by=2)
 		for background_rgb in pattern_base:
 			self.set_range_of_pixels(snake.start, snake.start + len(snake.pattern), rgb_tuple_split(background_rgb), inside = False)
 			for i in range(crawl_length):
-				#self.turn_off_pixel(start)
 				background_red, background_green, background_blue = rgb_tuple_split(background_rgb)
 				self.set_pixel_color(snake.start, background_red, background_green, background_blue)
 				snake.move(1)
-				#start = (start + 1) % self.count
-				# end = ((end + 1) % self.count)
 				snake.iteration(self.move_pattern)
-					#self.light_all_off_pixels(convert_strings_in_tuple_to_ints(background_rgb))
 				self.pixels.show()
 				time.sleep(.1)
 
