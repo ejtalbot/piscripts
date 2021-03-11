@@ -8,7 +8,7 @@ class Snake:
 		self.start = start
 		self.reverse = reverse
 		self.pattern = lengthen_sequence(pattern, lengthen_sequence_by)
-		self.pattern = reversed(self.pattern) if reverse else pattern
+		self.pattern = reversed(self.pattern) if reverse else self.pattern
 		self.board_length = board_length
 
 	@property
