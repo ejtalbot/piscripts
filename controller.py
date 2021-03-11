@@ -4,6 +4,7 @@ import random
 import time
 from typing import List, Tuple
 
+from snake import Snake
 from utils.conversions import rgb_tuple_split, lengthen_sequence, create_color_pattern_by_name, convert_strings_in_tuple_to_ints, modulo_position_in_count
 from utils.csv_handler import read_to_dict_list, read_to_color_name_dict
 
@@ -149,25 +150,25 @@ class Board:
 		crawl_length: int = 60,
 		pattern_increase_factor: int = 1
 	):
+		snake = Snake(0, pattern_base, self.count)
 		pattern = lengthen_sequence(pattern_base, pattern_increase_factor)
 		start = -1
 		end = len(pattern) -1
-		for i in range(100):
-			for background_rgb in pattern_base:
-				self.set_range_of_pixels(start, start + len(pattern), rgb_tuple_split(background_rgb), inside = False)
-				for i in range(crawl_length):
-					#self.turn_off_pixel(start)
-					background_red, background_green, background_blue = rgb_tuple_split(background_rgb)
-					self.set_pixel_color(start, background_red, background_green, background_blue)
-					start = (start + 1) % self.count
-					end = ((end + 1) % self.count)
-					for snake_position, pixel in enumerate(range(start, start + len(pattern))):
-						current_pixel = pixel if pixel < self.count else (pixel + 1) % self.count
-						red, green, blue = rgb_tuple_split(pattern[snake_position])
-						self.set_pixel_color(current_pixel, red, green, blue)
-						#self.light_all_off_pixels(convert_strings_in_tuple_to_ints(background_rgb))
-					self.pixels.show()
-					time.sleep(.1)
+		for background_rgb in pattern_base:
+			self.set_range_of_pixels(start, start + len(pattern), rgb_tuple_split(background_rgb), inside = False)
+			for i in range(crawl_length):
+				#self.turn_off_pixel(start)
+				background_red, background_green, background_blue = rgb_tuple_split(background_rgb)
+				self.set_pixel_color(start, background_red, background_green, background_blue)
+				start = (start + 1) % self.count
+				end = ((end + 1) % self.count)
+				for snake_position, pixel in enumerate(range(start, start + len(pattern))):
+					current_pixel = pixel if pixel < self.count else (pixel + 1) % self.count
+					red, green, blue = rgb_tuple_split(pattern[snake_position])
+					self.set_pixel_color(current_pixel, red, green, blue)
+					#self.light_all_off_pixels(convert_strings_in_tuple_to_ints(background_rgb))
+				self.pixels.show()
+				time.sleep(.1)
 
 	def light_all_off_pixels(self, rgb: Tuple[int, int, int] = (255, 255, 255)):
 		for pixel_number, pixel in enumerate(self.pixels):
@@ -185,6 +186,27 @@ class Board:
 			for pixel_number in range(stop, self.count):
 				self.set_pixel_color(modulo_position_in_count(pixel_number, self.count), red, green, blue)
 
+	def move_pattern(self, position, pixel)
+		current_pixel = pixel if pixel < self.count else (pixel + 1) % self.count
+		red, green, blue = rgb_tuple_split(pattern[snake_position])
+		self.set_pixel_color(current_pixel, red, green, blue)
+
+#snake lengths
+#snake color - set range of
+	def opposite_whirl(self, snake_1: list[Tuple[str, str, str]], snake_2: List[Tuple[str,str,str]]):
+		#snake_1
+		#snake_2
+		#start snake1 at beginning
+		snake_1_tail = 0
+		snake_1_head = len(snake_1)
+		#set lights in range for snake1
+		#increment like ranbow
+		#start snake2 at end
+		snake_2_tail = self.count - 1
+		snake_2_head = snake_2_tail - len(snake_2)
+		#set lights in range for snake2
+		#
+
 
 def rainbow_snake_background_cycle():
 	board = Board()
@@ -197,7 +219,7 @@ def rainbow_snake_background_cycle():
 	)
 	board.turn_off_all_pixels()
 
-rainbow_snake_background_cycle()
+#rainbow_snake_background_cycle()
 
 
 board = Board()
