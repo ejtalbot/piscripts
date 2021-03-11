@@ -152,6 +152,7 @@ class Board:
 	):
 		snake = Snake(0, pattern_base, self.count, lengthen_sequence_by=pattern_increase_factor, reverse=True)
 		for background_rgb in pattern_base:
+			# uncomment if snake doesnt fill entire
 			#self.set_range_of_pixels(snake.start, snake.start + len(snake.pattern), rgb_tuple_split(background_rgb), inside = False)
 			for i in range(crawl_length):
 				background_red, background_green, background_blue = rgb_tuple_split(background_rgb)
@@ -159,7 +160,7 @@ class Board:
 				snake.move(1)
 				snake.iteration(self.move_pattern)
 				self.pixels.show()
-				time.sleep(.1)
+				time.sleep(.05)
 
 	def light_all_off_pixels(self, rgb: Tuple[int, int, int] = (255, 255, 255)):
 		for pixel_number, pixel in enumerate(self.pixels):
