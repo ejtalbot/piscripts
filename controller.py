@@ -186,7 +186,7 @@ class Board:
 
 	def move_pattern(self, pattern, position, pixel):
 		current_pixel = pixel if pixel < self.count else (pixel + 1) % self.count
-		red, green, blue = rgb_tuple_split(pattern[snake_position])
+		red, green, blue = rgb_tuple_split(pattern[position])
 		self.set_pixel_color(current_pixel, red, green, blue)
 
 #snake lengths
