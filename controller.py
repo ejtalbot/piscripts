@@ -160,7 +160,7 @@ class Board:
 				snake.move(1)
 				snake.iteration(self.move_pattern)
 				self.pixels.show()
-				time.sleep(.05)
+				time.sleep(.01)
 
 	def light_all_off_pixels(self, rgb: Tuple[int, int, int] = (255, 255, 255)):
 		for pixel_number, pixel in enumerate(self.pixels):
