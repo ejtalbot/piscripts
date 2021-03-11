@@ -159,7 +159,7 @@ class Board:
 			for i in range(crawl_length):
 				#self.turn_off_pixel(start)
 				background_red, background_green, background_blue = rgb_tuple_split(background_rgb)
-				self.set_pixel_color(start, background_red, background_green, background_blue)
+				self.set_pixel_color(snake.start, background_red, background_green, background_blue)
 				snake.move(1)
 				#start = (start + 1) % self.count
 				# end = ((end + 1) % self.count)
