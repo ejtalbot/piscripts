@@ -27,4 +27,4 @@ class Snake:
 
 	def iteration(self, func):
 		for position, pixel in enumerate(range(self.start, len(self.pattern) + self.start)):
-			func(self.pattern, position, pixel if pixel < self.board_length else (pixel) % self.board_length)
+			func(self.pattern, position, pixel if pixel < self.board_length else pixel % self.board_length)
