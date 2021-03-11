@@ -1,11 +1,12 @@
 from typing import List, Tuple
 
 class Snake:
-	def __init__(self, start: int, pattern: List[Tuple[int,int,int]], board_length: int, reverse: bool = False):
+	def __init__(self, start: int, pattern: List[Tuple[int,int,int]], board_length: int, lengthen_sequence_by: int = 1, reverse: bool = False):
 		#pattern cant be more than loength of board
 		self.start = start
 		self.reverse = reverse
-		self.pattern = reversed(pattern) if reverse else pattern
+		self.pattern = lengthen_sequence(pattern, lengthen_sequence_by)
+		self.pattern = reversed(self.pattern) if reverse else pattern
 		self.board_length = board_length
 
 	@property
