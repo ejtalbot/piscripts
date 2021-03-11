@@ -152,21 +152,22 @@ class Board:
 		pattern = lengthen_sequence(pattern_base, pattern_increase_factor)
 		start = -1
 		end = len(pattern) -1
-		for background_rgb in pattern_base:
-			self.set_range_of_pixels(start, start + len(pattern), rgb_tuple_split(background_rgb), inside = False)
-			for i in range(crawl_length):
-				#self.turn_off_pixel(start)
-				background_red, background_green, background_blue = rgb_tuple_split(background_rgb)
-				self.set_pixel_color(start, background_red, background_green, background_blue)
-				start = (start + 1) % self.count
-				end = ((end + 1) % self.count)
-				for snake_position, pixel in enumerate(range(start, start + len(pattern))):
-					current_pixel = pixel if pixel < self.count else (pixel + 1) % self.count
-					red, green, blue = rgb_tuple_split(pattern[snake_position])
-					self.set_pixel_color(current_pixel, red, green, blue)
-					#self.light_all_off_pixels(convert_strings_in_tuple_to_ints(background_rgb))
-				self.pixels.show()
-				time.sleep(.1)
+		for i in range(100):
+			for background_rgb in pattern_base:
+				self.set_range_of_pixels(start, start + len(pattern), rgb_tuple_split(background_rgb), inside = False)
+				for i in range(crawl_length):
+					#self.turn_off_pixel(start)
+					background_red, background_green, background_blue = rgb_tuple_split(background_rgb)
+					self.set_pixel_color(start, background_red, background_green, background_blue)
+					start = (start + 1) % self.count
+					end = ((end + 1) % self.count)
+					for snake_position, pixel in enumerate(range(start, start + len(pattern))):
+						current_pixel = pixel if pixel < self.count else (pixel + 1) % self.count
+						red, green, blue = rgb_tuple_split(pattern[snake_position])
+						self.set_pixel_color(current_pixel, red, green, blue)
+						#self.light_all_off_pixels(convert_strings_in_tuple_to_ints(background_rgb))
+					self.pixels.show()
+					time.sleep(.1)
 
 	def light_all_off_pixels(self, rgb: Tuple[int, int, int] = (255, 255, 255)):
 		for pixel_number, pixel in enumerate(self.pixels):
@@ -191,8 +192,8 @@ def rainbow_snake_background_cycle():
 	rainbow_colors = create_color_pattern_by_name(rainbow_color_names)
 	board.multicolor_snake(
 		rainbow_colors,
-		crawl_length=100,
-		pattern_increase_factor=2
+		crawl_length=20,
+		pattern_increase_factor=3
 	)
 	board.turn_off_all_pixels()
 
