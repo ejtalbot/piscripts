@@ -22,5 +22,5 @@ class Snake:
 			self.start = (self.start + steps) % self.board_length
 
 	def iteration(self, func):
-		for position, pixel in enumerate(range(self.start, len(self.pattern + self.start))):
+		for position, pixel in enumerate(range(self.start, len(self.pattern) + self.start)):
 			func(position, pixel if pixel < self.count else (pixel + 1) % self.count)
