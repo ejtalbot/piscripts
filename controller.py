@@ -193,7 +193,7 @@ class Board:
 
 #snake lengths
 #snake color - set range of
-	def opposite_whirl(self, snake_1: list[Tuple[str, str, str]], snake_2: List[Tuple[str,str,str]]):
+	def opposite_whirl(self, snake_1: List[Tuple[str, str, str]], snake_2: List[Tuple[str,str,str]]):
 		#snake_1
 		#snake_2
 		#start snake1 at beginning
