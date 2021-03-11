@@ -1,6 +1,6 @@
 from typing import List, Tuple
 
-from conversions import lengthen_sequence
+from utils.conversions import lengthen_sequence
 
 class Snake:
 	def __init__(self, start: int, pattern: List[Tuple[int,int,int]], board_length: int, lengthen_sequence_by: int = 1, reverse: bool = False):
