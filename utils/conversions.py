@@ -10,11 +10,9 @@ def create_rgb_tuple(red: int, green: int, blue: int):
 	return tuple(red, green, blue)
 
 def lengthen_sequence(sequence: List[str], multiplier: int):
-	new = [
+	return [
 		sub_item for sub_items in [[item]*multiplier for item in sequence] for sub_item in sub_items
 	]
-	print(new)
-	return new
 
 def create_color_pattern_by_name(color_names: List[str]) -> List[Tuple[str,str,str]]:
 	"""Gte a color pattern based on names passed in list"""
