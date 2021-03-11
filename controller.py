@@ -160,7 +160,8 @@ class Board:
 				#self.turn_off_pixel(start)
 				background_red, background_green, background_blue = rgb_tuple_split(background_rgb)
 				self.set_pixel_color(start, background_red, background_green, background_blue)
-				start = (start + 1) % self.count
+				snake.move(1)
+				#start = (start + 1) % self.count
 				# end = ((end + 1) % self.count)
 				snake.iteration(self.move_pattern)
 					#self.light_all_off_pixels(convert_strings_in_tuple_to_ints(background_rgb))
