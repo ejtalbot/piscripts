@@ -3,18 +3,9 @@ import websockets
 
 from controller import rainbow_snake_background_cycle
 
-async def hello(websocket, path):
-    name = await websocket.recv()
-    print(f"< {name}")
-
-    greeting = f"Hello {name}!"
-
-    await websocket.send(greeting)
-    print(f"> {greeting}")
-
 
 async def lights(websocket, path):
-	keep_running = True
+    keep_running = True
     command = await websocket.recv()
     print(f"< {command}")
     print(f"< {type(command)}")
