@@ -4,7 +4,7 @@ from functools import wraps
 def interrupt(func):
 	@wraps
 	async def wrapper(*args, **kwargs):
-		board_object = self.[0]
+		board_object = self[0]
 		if board_object.off_switch:
 			print("board switched off")
 			board_object.turn_off_all_pixels()
