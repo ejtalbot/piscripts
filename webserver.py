@@ -18,7 +18,7 @@ async def lights(websocket, path):
     	print(board.off_switch)
 
 start_server = websockets.serve(lights, "0.0.0.0", 8765)
-asyncio.ensure_future(board.blink())
+asyncio.ensure_future(board.blink(255, 0, 0))
 loop = asyncio.get_event_loop()
 loop.run_until_complete(start_server)
 loop.run_forever()
