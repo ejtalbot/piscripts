@@ -1,19 +1,24 @@
 import asyncio
 import websockets
 
-from controller import rainbow_snake_background_cycle
+from controller import Board, rainbow_snake_background_cycle
 
+board = Board()
+
+keep_going = True
 
 async def lights(websocket, path):
-    keep_running = True
     command = await websocket.recv()
-    print(f"< {command}")
-    print(f"< {type(command)}")
-    await rainbow_snake_background_cycle()
-
     await websocket.send(f"command {command}")
+    if command == "off":
+    	board.off_switch = True
+    	print(board.off_switch)
+    else:
+    	print("command")
+    	print(board.off_switch)
 
 start_server = websockets.serve(lights, "0.0.0.0", 8765)
-
-asyncio.get_event_loop().run_until_complete(start_server)
-asyncio.get_event_loop().run_forever()
+asyncio.ensure_future(board.blink())
+loop = asyncio.get_event_loop()
+loop.run_until_complete(start_server)
+loop.run_forever()
