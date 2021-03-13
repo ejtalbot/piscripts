@@ -162,7 +162,8 @@ class Board:
 			self.pixels.show()
 			time.sleep(.1)
 
-	def multicolor_snake(
+	@interrupt
+	async def multicolor_snake(
 		self,
 		snake: Snake,
 		crawl_length: int = 60,
@@ -176,7 +177,8 @@ class Board:
 				snake.move(1)
 				snake.iteration(self.move_pattern)
 				self.pixels.show()
-				time.sleep(.5)
+				time.sleep(.1)
+		board.turn_off_all_pixels()
 
 	def light_all_off_pixels(self, rgb: Tuple[int, int, int] = (255, 255, 255)):
 		for pixel_number, pixel in enumerate(self.pixels):
@@ -227,7 +229,7 @@ def rainbow_snake_background_cycle():
 	)
 	board.turn_off_all_pixels()
 
-rainbow_snake_background_cycle()
+#rainbow_snake_background_cycle()
 
 
 #board = Board()
