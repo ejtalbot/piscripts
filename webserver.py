@@ -2,6 +2,7 @@ import asyncio
 import websockets
 
 from controller import Board, rainbow_snake_background_cycle
+from snake import Snake
 from utils.conversions import create_color_pattern_by_name
 
 board = Board()
