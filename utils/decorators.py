@@ -2,7 +2,7 @@ import asyncio
 from functools import wraps
 
 def interrupt(func):
-	@wraps
+	@wraps(func)
 	async def wrapper(*args, **kwargs):
 		board_object = self[0]
 		if board_object.off_switch:
