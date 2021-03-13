@@ -200,7 +200,7 @@ class Board:
 		#
 
 
-def rainbow_snake_background_cycle():
+async def rainbow_snake_background_cycle():
 	board = Board()
 	rainbow_color_names = ["red", "orange_red", "yellow", "electric_green", "blue", "violet"]	
 	rainbow_colors = create_color_pattern_by_name(rainbow_color_names)
