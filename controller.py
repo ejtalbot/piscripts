@@ -54,11 +54,10 @@ class Board:
 		for pixel_number in range(self.count):
 			self.set_pixel_color(pixel_number, red, green, blue)
 			self.pixels.show()
-			await asyncio.sleep(1)
+			await asyncio.sleep(.1)
 		self.turn_off_all_pixels()
 		await asyncio.sleep(1)
-		print("turn off all pixels")
-		self.turn_off_all_pixels()
+		print("turned off all pixels")
 
 	def offset_light(self, offset: int, start: int, red: int, green: int, blue: int):
 		for pixel_number in range(start, self.max_step(start, self.count, offset), offset):

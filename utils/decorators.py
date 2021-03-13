@@ -10,7 +10,8 @@ def interrupt(func):
 			board_object.turn_off_all_pixels()
 		else:
 			try:
-				await func(*args, **kwargs)
+				while not board_object.off_switch:
+					await func(*args, **kwargs)
 			except KeyboardInterrupt:
 				print("Process interrupted")
 	return wrapper
