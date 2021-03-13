@@ -151,17 +151,16 @@ class Board:
 		pattern_increase_factor: int = 1
 	):
 		snake = Snake(0, pattern_base, self.count, lengthen_sequence_by=pattern_increase_factor, reverse=True)
-		while True:
-			for background_rgb in pattern_base:
-				# can comment if snake fills entire
-				self.set_range_of_pixels(snake.start, snake.start + len(snake.pattern), rgb_tuple_split(background_rgb), inside = False)
-				for i in range(crawl_length):
-					background_red, background_green, background_blue = rgb_tuple_split(background_rgb)
-					#self.set_pixel_color(snake.start, background_red, background_green, background_blue)
-					snake.move(1)
-					snake.iteration(self.move_pattern)
-					self.pixels.show()
-					time.sleep(.05)
+		for background_rgb in pattern_base:
+			# can comment if snake fills entire
+			self.set_range_of_pixels(snake.start, snake.start + len(snake.pattern), rgb_tuple_split(background_rgb), inside = False)
+			for i in range(crawl_length):
+				background_red, background_green, background_blue = rgb_tuple_split(background_rgb)
+				#self.set_pixel_color(snake.start, background_red, background_green, background_blue)
+				snake.move(1)
+				snake.iteration(self.move_pattern)
+				self.pixels.show()
+				time.sleep(.5)
 
 	def light_all_off_pixels(self, rgb: Tuple[int, int, int] = (255, 255, 255)):
 		for pixel_number, pixel in enumerate(self.pixels):
@@ -215,7 +214,7 @@ def rainbow_snake_background_cycle():
 #rainbow_snake_background_cycle()
 
 
-board = Board()
+#board = Board()
 
 #board.subset_color_wheel([(255,0,127), (239,187,204), (235,76,66)])
 #board.full_color_wheel()
@@ -240,4 +239,4 @@ for i in range(10):
 	board.offset_light(3, i+1, 255, 255, 0)
 	board.offset_light(3, i+2, 0, 255, 255)
 """
-board.turn_off_all_pixels()
+#board.turn_off_all_pixels()
