@@ -41,10 +41,11 @@ class Board:
 		self.pixels.show()
 
 	async def cycle(self, red: int, green: int, blue: int):
-		for pixel_number in range(self.count):
-			self.set_pixel_color(pixel_number, red, green, blue)
-			self.pixels.show()
-			asyncio.sleep(.1)
+		while not self.off_switch:
+			for pixel_number in range(self.count):
+				self.set_pixel_color(pixel_number, red, green, blue)
+				self.pixels.show()
+				asyncio.sleep(.1)
 		print("turn off all pixels")
 		self.turn_off_all_pixels()
 
@@ -163,27 +164,19 @@ class Board:
 
 	def multicolor_snake(
 		self,
-		pattern_base: List[Tuple[str, str, str]],
+		snake: Snake,
 		crawl_length: int = 60,
-		pattern_increase_factor: int = 1
 	):
-		snake = Snake(0, pattern_base, self.count, lengthen_sequence_by=pattern_increase_factor, reverse=True)
-		for background_rgb in pattern_base:
-			print(background_rgb)
+		for background_rgb in snake.pattern_base:
 			# can comment if snake fills entire
 			self.set_range_of_pixels(snake.start, snake.start + len(snake.pattern), rgb_tuple_split(background_rgb), inside = False)
 			for i in range(crawl_length):
-				print(i)
-				if self.off_switch:
-					self.turn_off_all_pixels()
-					print("turned off all pixels")
-				else:
-					background_red, background_green, background_blue = rgb_tuple_split(background_rgb)
-					#self.set_pixel_color(snake.start, background_red, background_green, background_blue)
-					snake.move(1)
-					snake.iteration(self.move_pattern)
-					self.pixels.show()
-					time.sleep(.5)
+				background_red, background_green, background_blue = rgb_tuple_split(background_rgb)
+				#self.set_pixel_color(snake.start, background_red, background_green, background_blue)
+				snake.move(1)
+				snake.iteration(self.move_pattern)
+				self.pixels.show()
+				time.sleep(.5)
 
 	def light_all_off_pixels(self, rgb: Tuple[int, int, int] = (255, 255, 255)):
 		for pixel_number, pixel in enumerate(self.pixels):
@@ -223,18 +216,18 @@ class Board:
 		#
 
 
-async def rainbow_snake_background_cycle():
+def rainbow_snake_background_cycle():
 	board = Board()
 	rainbow_color_names = ["red", "orange_red", "yellow", "electric_green", "blue", "violet"]	
 	rainbow_colors = create_color_pattern_by_name(rainbow_color_names)
+	snake = Snake(0, rainbow_colors, board.count, lengthen_sequence_by=2, reverse=True)
 	board.multicolor_snake(
-		rainbow_colors,
+		snake,
 		crawl_length=20,
-		pattern_increase_factor=10
 	)
 	board.turn_off_all_pixels()
 
-#rainbow_snake_background_cycle()
+rainbow_snake_background_cycle()
 
 
 #board = Board()

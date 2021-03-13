@@ -3,10 +3,11 @@ from typing import List, Tuple
 from utils.conversions import lengthen_sequence
 
 class Snake:
-	def __init__(self, start: int, pattern: List[Tuple[int,int,int]], board_length: int, lengthen_sequence_by: int = 1, reverse: bool = False):
+	def __init__(self, start: int, pattern_base: List[Tuple[int,int,int]], board_length: int, lengthen_sequence_by: int = 1, reverse: bool = False):
 		#pattern cant be more than loength of board
 		self.start = start
-		self.pattern = lengthen_sequence(pattern, lengthen_sequence_by)
+		self.pattern_base = pattern_base
+		self.pattern = lengthen_sequence(self.pattern_base, lengthen_sequence_by)
 		self.reverse = reverse
 		if self.reverse:
 			self.pattern.reverse()
