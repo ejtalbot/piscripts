@@ -8,6 +8,7 @@ from typing import List, Tuple
 from snake import Snake
 from utils.conversions import rgb_tuple_split, lengthen_sequence, create_color_pattern_by_name, convert_strings_in_tuple_to_ints, modulo_position_in_count
 from utils.csv_handler import read_to_dict_list, read_to_color_name_dict
+from utils.decorators import interrupt
 
 
 class Board:
@@ -22,7 +23,6 @@ class Board:
 			print(f"invalid color outside rgb range: ({red, green, blue})")
 		elif self.off_switch:
 			self.turn_off_all_pixels()
-			print("off")
 		else:
 			self.pixels[pixel_number] = (red, green, blue)
 
@@ -38,6 +38,7 @@ class Board:
 	def turn_off_all_pixels(self):
 		for pixel_number in range(self.count):
 			self.turn_off_pixel(pixel_number)
+		print("turning off all pixels")
 		self.pixels.show()
 
 	async def cycle(self, red: int, green: int, blue: int):
@@ -49,14 +50,14 @@ class Board:
 		print("turn off all pixels")
 		self.turn_off_all_pixels()
 
+	@interrupt
 	async def blink(self, red: int, green: int, blue: int):
-		while not self.off_switch:
-			for pixel_number in range(self.count):
-				self.set_pixel_color(pixel_number, red, green, blue)
-				self.pixels.show()
-				await asyncio.sleep(1)
-			self.turn_off_all_pixels()
-			await asyncio.sleep(1)
+		for pixel_number in range(self.count):
+			self.set_pixel_color(pixel_number, red, green, blue)
+			self.pixels.show()
+			await asyncio.sleep(.1)
+		self.turn_off_all_pixels()
+		await asyncio.sleep(1)
 		print("turn off all pixels")
 		self.turn_off_all_pixels()
 
