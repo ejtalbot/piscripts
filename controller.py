@@ -177,7 +177,7 @@ class Board:
 				snake.move(1)
 				snake.iteration(self.move_pattern)
 				self.pixels.show()
-				time.sleep(.1)
+				asyncio.sleep(.1)
 		self.turn_off_all_pixels()
 
 	def light_all_off_pixels(self, rgb: Tuple[int, int, int] = (255, 255, 255)):
