@@ -212,7 +212,7 @@ def rainbow_snake_background_cycle():
 	)
 	board.turn_off_all_pixels()
 
-rainbow_snake_background_cycle()
+#rainbow_snake_background_cycle()
 
 
 board = Board()
