@@ -41,11 +41,10 @@ class Board:
 		self.pixels.show()
 
 	async def cycle(self, red: int, green: int, blue: int):
-		while not self.off_switch:
-			for pixel_number in range(self.count):
-				self.set_pixel_color(pixel_number, red, green, blue)
-				self.pixels.show()
-				asyncio.sleep(.1)
+		for pixel_number in range(self.count):
+			self.set_pixel_color(pixel_number, red, green, blue)
+			self.pixels.show()
+			asyncio.sleep(.1)
 		print("turn off all pixels")
 		self.turn_off_all_pixels()
 
