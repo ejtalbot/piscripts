@@ -20,6 +20,9 @@ class Board:
 	def set_pixel_color(self, pixel_number: int, red: int, green: int, blue: int):
 		if any(not(0<=color<=255) for color in {red, green, blue}):
 			print(f"invalid color outside rgb range: ({red, green, blue})")
+		elif self.off_switch:
+			self.turn_off_all_pixels()
+			print("off")
 		else:
 			self.pixels[pixel_number] = (red, green, blue)
 
