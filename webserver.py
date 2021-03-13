@@ -9,7 +9,7 @@ async def lights(websocket, path):
     command = await websocket.recv()
     print(f"< {command}")
     print(f"< {type(command)}")
-    rainbow_snake_background_cycle()
+    await rainbow_snake_background_cycle()
 
     await websocket.send(f"command {command}")
 
