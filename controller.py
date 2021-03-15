@@ -17,6 +17,7 @@ class Board:
 		self.count = count
 		self.pixels = neopixel.NeoPixel(board.__getattribute__(gpio), self.count, brightness=.2, auto_write=False)
 		self.off_switch = False
+		self.snakes = dict()
 
 	def set_pixel_color(self, pixel_number: int, red: int, green: int, blue: int):
 		if any(not(0<=color<=255) for color in {red, green, blue}):
@@ -178,7 +179,6 @@ class Board:
 				snake.iteration(self.move_pattern)
 				self.pixels.show()
 				await asyncio.sleep(.2)
-		self.turn_off_all_pixels()
 
 	def light_all_off_pixels(self, rgb: Tuple[int, int, int] = (255, 255, 255)):
 		for pixel_number, pixel in enumerate(self.pixels):
@@ -200,6 +200,24 @@ class Board:
 		current_pixel = pixel if pixel < self.count else (pixel + 1) % self.count
 		red, green, blue = rgb_tuple_split(pattern[position])
 		self.set_pixel_color(current_pixel, red, green, blue)
+
+	def add_snake(
+		self,
+		snake_name: str,
+		start: int,
+		pattern_base: List[Tuple[int,int,int]],
+		board_length: int,
+		lengthen_sequence_by: int = 1,
+		reverse: bool = False
+	):
+		snake = Snake(
+			start,
+			pattern_base,
+			lengthen_sequence_by,
+			reverse
+		)
+		self.snakes[snake_name] = snake
+
 
 #snake lengths
 #snake color - set range of
