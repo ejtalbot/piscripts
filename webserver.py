@@ -19,7 +19,7 @@ async def lights(websocket, path):
 	await websocket.send(f"processing command {command}")
 
 start_server = websockets.serve(lights, "0.0.0.0", 8765)
-asyncio.ensure_future(board.multicolor_snake(self.snakes["rainbow"], crawl_length=5))
+asyncio.ensure_future(board.multicolor_snake(board.snakes["rainbow"], crawl_length=5))
 loop = asyncio.get_event_loop()
 loop.run_until_complete(start_server)
 loop.run_forever()
