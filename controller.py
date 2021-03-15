@@ -169,6 +169,7 @@ class Board:
 		snake: Snake,
 		crawl_length: int = 60,
 	):
+		print(snake.__dict__)
 		for background_rgb in snake.pattern_base:
 			# can comment if snake fills entire
 			self.set_range_of_pixels(snake.start, snake.start + len(snake.pattern), rgb_tuple_split(background_rgb), inside = False)
