@@ -214,6 +214,7 @@ class Board:
 		snake = Snake(
 			start,
 			pattern_base,
+			board_length,
 			lengthen_sequence_by,
 			reverse
 		)
