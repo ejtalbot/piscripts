@@ -12,6 +12,7 @@ class Snake:
 		if self.reverse:
 			self.pattern.reverse()
 		self.board_length = board_length
+		self.counter = 0
 
 	@property
 	def end(self):
