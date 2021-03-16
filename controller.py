@@ -140,7 +140,7 @@ class Board:
 	@interrupt
 	async def subset_color_wheel(self):
 		for pixel_number in range(self.count):
-			color_position = (pixel_number + i) % len(self.active_snake)
+			color_position = pixel_number % len(self.active_snake)
 			red, green, blue = rgb_tuple_split(self.actice_snake.pattern[color_position])
 			self.set_pixel_color(pixel_number, red, green, blue)
 		self.pixels.show()
