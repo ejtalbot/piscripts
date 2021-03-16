@@ -144,7 +144,7 @@ class Board:
 			red, green, blue = rgb_tuple_split(self.active_snake.pattern[color_position])
 			self.set_pixel_color(pixel_number, red, green, blue)
 		self.pixels.show()
-		asyncio.sleep(.08)
+		await asyncio.sleep(.08)
 
 	def snake(self, color: Tuple[str, str, str], length: int):
 		red, green, blue = rgb_tuple_split(color)
