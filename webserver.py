@@ -24,7 +24,9 @@ async def lights(websocket, path):
 	if command == "off":
 		board.off_switch = True
 	if command == "rainbow":
-		print("rainbow")
+		board.set_active_snake("rainbow")
+	if command == "purple_pink":
+		board.set_active_snake("purple_pink")
 
 	await websocket.send(f"processing command {command}")
 
