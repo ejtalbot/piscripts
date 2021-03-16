@@ -17,7 +17,7 @@ purple_pink_colors = create_color_pattern_by_name(rainbow_color_names)
 
 board.add_snake("rainbow", 0, rainbow_colors, board.count, lengthen_sequence_by=2, reverse=False)
 board.add_snake("purple_pink", 0, purple_pink_colors, board.count, lengthen_sequence_by=3, reverse=False)
-board.set_active_snake(self, "rainbow")
+board.set_active_snake("rainbow")
 
 async def lights(websocket, path):
 	command = await websocket.recv()
