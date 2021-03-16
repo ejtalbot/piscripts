@@ -12,7 +12,7 @@ rainbow_colors = create_color_pattern_by_name(rainbow_color_names)
 
 #snakes
 purple_pink_names = ["pink_orange", "magenta", "purple_pizzazz", "violet"]
-purple_pink_colors = create_color_pattern_by_name(rainbow_color_names)
+purple_pink_colors = create_color_pattern_by_name(purple_pink_names)
 
 
 board.add_snake("rainbow", 0, rainbow_colors, board.count, lengthen_sequence_by=2, reverse=False)
