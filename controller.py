@@ -139,9 +139,11 @@ class Board:
 
 	@interrupt
 	async def subset_color_wheel(self):
+		print(self.active_snake.pattern)
 		for pixel_number in range(self.count):
 			color_position = pixel_number % len(self.active_snake.pattern)
 			red, green, blue = rgb_tuple_split(self.active_snake.pattern[color_position])
+			print(pixel_number, red, blue, green)
 			self.set_pixel_color(pixel_number, red, green, blue)
 		self.pixels.show()
 		await asyncio.sleep(.08)
