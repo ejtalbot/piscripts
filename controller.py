@@ -18,6 +18,8 @@ class Board:
 		self.pixels = neopixel.NeoPixel(board.__getattribute__(gpio), self.count, brightness=.2, auto_write=False)
 		self.off_switch = False
 		self.snakes = dict()
+		self.active_snake = None
+		self.action = None
 
 	def set_pixel_color(self, pixel_number: int, red: int, green: int, blue: int):
 		if any(not(0<=color<=255) for color in {red, green, blue}):
@@ -133,17 +135,16 @@ class Board:
 			red, green, blue = rgb_tuple_split(color)
 			self.set_pixel_color(0, red, green, blue)
 			self.pixels.show()
-			time.sleep(.1)
+			time.sleep(.05)
 
-	def subset_color_wheel(self, colors: List[Tuple[str, str, str]]):
-		loop_count = 10
-		for i in range(loop_count):
-			for pixel_number in range(self.count):
-				color_position = (pixel_number + i) % len(colors)
-				red, green, blue = rgb_tuple_split(colors[color_position])
-				self.set_pixel_color(pixel_number, red, green, blue)
-			self.pixels.show()
-			time.sleep(.1 + .1*(i % 3))
+	@interrupt
+	async def subset_color_wheel(self, snake: List[Tuple[str, str, str]]):
+		for pixel_number in range(self.count):
+			color_position = (pixel_number + i) % len(self.active_snake)
+			red, green, blue = rgb_tuple_split(self.actice_snake.pattern[color_position])
+			self.set_pixel_color(pixel_number, red, green, blue)
+		self.pixels.show()
+		asyncio.sleep(.08)
 
 	def snake(self, color: Tuple[str, str, str], length: int):
 		red, green, blue = rgb_tuple_split(color)
@@ -166,17 +167,16 @@ class Board:
 	@interrupt
 	async def multicolor_snake(
 		self,
-		snake: Snake,
 		crawl_length: int = 60,
 	):
-		for background_rgb in snake.pattern_base:
+		for background_rgb in self.active_snake.pattern_base:
 			# can comment if snake fills entire
-			self.set_range_of_pixels(snake.start, snake.start + len(snake.pattern), rgb_tuple_split(background_rgb), inside = False)
+			self.set_range_of_pixels(self.active_snake.start, self.active_snake.start + len(self.active_snake.pattern), rgb_tuple_split(background_rgb), inside = False)
 			for i in range(crawl_length):
 				background_red, background_green, background_blue = rgb_tuple_split(background_rgb)
-				self.set_pixel_color(snake.start, background_red, background_green, background_blue)
-				snake.move(1)
-				snake.iteration(self.move_pattern)
+				self.set_pixel_color(self.active_snake.start, background_red, background_green, background_blue)
+				self.active_snake.move(1)
+				self.active_snake.iteration(self.move_pattern)
 				self.pixels.show()
 				await asyncio.sleep(.2)
 
@@ -219,6 +219,15 @@ class Board:
 		)
 		self.snakes[snake_name] = snake
 
+	def set_active_snake(self, snake_name):
+		self.active_snake = self.snakes.get(snake_name)
+
+	def set_action(self, func, *args):
+		try:
+			board_method = self.getattr(func)
+			board_method(*args)
+		except AttributeError as e:
+			raise e
 
 #snake lengths
 #snake color - set range of
