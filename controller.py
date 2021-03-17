@@ -19,7 +19,7 @@ class Board:
 		self.off_switch = False
 		self.snakes = dict()
 		self.active_snake = None
-		self.current_action = None
+		self.current_action = ""
 
 	def set_pixel_color(self, pixel_number: int, red: int, green: int, blue: int):
 		if any(not(0<=color<=255) for color in {red, green, blue}):
