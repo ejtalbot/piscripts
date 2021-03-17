@@ -237,13 +237,6 @@ class Board:
 	def set_active_snake(self, snake_name):
 		self.active_snake = self.snakes.get(snake_name)
 
-	def set_action(self, func, *args):
-		try:
-			board_method = self.getattr(func)
-			board_method(*args)
-		except AttributeError as e:
-			raise e
-
 #snake lengths
 #snake color - set range of
 	def opposite_whirl(self, snake_1: List[Tuple[str, str, str]], snake_2: List[Tuple[str,str,str]]):
