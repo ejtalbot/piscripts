@@ -14,9 +14,17 @@ rainbow_colors = create_color_pattern_by_name(rainbow_color_names)
 purple_pink_names = ["pink_orange", "magenta", "purple_pizzazz", "violet"]
 purple_pink_colors = create_color_pattern_by_name(purple_pink_names)
 
+hot_names = ["red", "persian_red", "orange_red", "selective_yellow", "yellow"]
+hot_colors = create_color_pattern_by_name(hot_names)
+
+cool_names = ["electric_green", "aquamarine", "teal", "blue", "violet"]
+cool_colors = create_color_pattern_by_name(cool_names)
+
 
 board.add_snake("rainbow", 0, rainbow_colors, board.count, lengthen_sequence_by=2, reverse=False)
 board.add_snake("purple_pink", 0, purple_pink_colors, board.count, lengthen_sequence_by=3, reverse=False)
+board.add_snake("cool", 0, cool_colors, board.count, lengthen_sequence_by=4, reverse=False)
+board.add_snake("hot", 0, hot_colors, board.count, lengthen_sequence_by=2, reverse=False)
 board.set_active_snake("rainbow")
 board.set_action("multicolor_snake")
 
