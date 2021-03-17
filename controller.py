@@ -50,7 +50,7 @@ class Board:
 	async def execute_current_action(self):
 		try:
 			board_method = getattr(self, self.current_action)
-			board_method()
+			await board_method()
 		except AttributeError as e:
 			print("no action set")
 			await asyncio.sleep(10)
