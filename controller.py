@@ -47,6 +47,7 @@ class Board:
 		if callable(getattr(self, func, None)):
 			self.current_action = func
 
+	@interrupt
 	async def execute_current_action(self):
 		try:
 			board_method = getattr(self, self.current_action)
@@ -64,7 +65,7 @@ class Board:
 		print("turn off all pixels")
 		self.turn_off_all_pixels()
 
-	@interrupt
+	#@interrupt
 	async def blink(self, red: int, green: int, blue: int):
 		for pixel_number in range(self.count):
 			self.set_pixel_color(pixel_number, red, green, blue)
@@ -149,7 +150,7 @@ class Board:
 			self.pixels.show()
 			time.sleep(.05)
 
-	@interrupt
+	#@interrupt
 	async def subset_color_wheel(self):
 		print(self.active_snake.pattern)
 		for pixel_number in range(self.count):
@@ -179,7 +180,7 @@ class Board:
 			self.pixels.show()
 			time.sleep(.1)
 
-	@interrupt
+	#@interrupt
 	async def multicolor_snake(
 		self,
 		crawl_length: int = 60,
