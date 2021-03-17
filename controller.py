@@ -19,7 +19,7 @@ class Board:
 		self.off_switch = False
 		self.snakes = dict()
 		self.active_snake = None
-		self.action = None
+		self.current_action = None
 
 	def set_pixel_color(self, pixel_number: int, red: int, green: int, blue: int):
 		if any(not(0<=color<=255) for color in {red, green, blue}):
@@ -42,6 +42,18 @@ class Board:
 		for pixel_number in range(self.count):
 			self.turn_off_pixel(pixel_number)
 		self.pixels.show()
+
+	def set_action(self, func):
+		if callable(getattr(self, func, None)):
+			self.current_action = func
+
+	async def execute_current_action(self):
+		try:
+			board_method = getattr(self, self.current_action)
+			board_method()
+		except AttributeError as e:
+			print("no action set")
+			await asyncio.sleep(10)
 
 	async def cycle(self, red: int, green: int, blue: int):
 		while not self.off_switch:
