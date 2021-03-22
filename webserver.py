@@ -6,7 +6,7 @@ from utils.conversions import create_color_pattern_by_name
 
 board = Board()
 
-# snakes
+# snakes test
 rainbow_color_names = [
     "red",
     "orange_red",
