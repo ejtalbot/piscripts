@@ -1,4 +1,5 @@
 import asyncio
+
 import websockets
 
 from controller import Board
@@ -28,23 +29,12 @@ cool_names = ["aquamarine", "teal", "blue", "violet"]
 cool_colors = create_color_pattern_by_name(cool_names)
 
 
+board.add_snake("rainbow", rainbow_colors, lengthen_sequence_by=2, reverse=False)
 board.add_snake(
-    "rainbow", 0, rainbow_colors, board.count, lengthen_sequence_by=2, reverse=False
+    "purple_pink", purple_pink_colors, lengthen_sequence_by=3, reverse=False
 )
-board.add_snake(
-    "purple_pink",
-    0,
-    purple_pink_colors,
-    board.count,
-    lengthen_sequence_by=3,
-    reverse=False,
-)
-board.add_snake(
-    "cool", 0, cool_colors, board.count, lengthen_sequence_by=4, reverse=False
-)
-board.add_snake(
-    "hot", 0, hot_colors, board.count, lengthen_sequence_by=2, reverse=False
-)
+board.add_snake("cool", cool_colors, lengthen_sequence_by=4, reverse=False)
+board.add_snake("hot", hot_colors, lengthen_sequence_by=2, reverse=False)
 board.set_active_snake("rainbow")
 board.set_action("multicolor_snake")
 

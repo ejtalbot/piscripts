@@ -5,6 +5,7 @@ from typing import List, Tuple
 import board
 import neopixel
 
+from data.presets import snake_templates
 from snake import Snake
 from utils.conversions import (
     create_color_pattern_by_name,
@@ -56,6 +57,11 @@ class Board:
     def set_action(self, func):
         if callable(getattr(self, func, None)):
             self.current_action = func
+
+    def set_initial_snakes(self):
+        for snake_name, color_name_pattern in snake_templates.items():
+            colors = create_color_pattern_by_name(color_name_pattern)
+            self.add_snake(snake_name, colors)
 
     @interrupt
     async def execute_current_action(self):
@@ -246,13 +252,12 @@ class Board:
     def add_snake(
         self,
         snake_name: str,
-        start: int,
         pattern_base: List[Tuple[int, int, int]],
-        board_length: int,
+        start: int = 0,
         lengthen_sequence_by: int = 1,
         reverse: bool = False,
     ):
-        snake = Snake(start, pattern_base, board_length, lengthen_sequence_by, reverse)
+        snake = Snake(start, pattern_base, self.count, lengthen_sequence_by, reverse)
         self.snakes[snake_name] = snake
 
     def set_active_snake(self, snake_name):
