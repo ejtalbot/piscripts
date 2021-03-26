@@ -92,7 +92,7 @@ class Board:
         print("turned off all pixels")
 
     async def blink_pattern(self):
-        for pixel_rgb_tuple in range(self.active_snake.pattern):
+        for pixel_rgb_tuple in self.active_snake.pattern:
             red, green, blue = rgb_tuple_split(pixel_rgb_tuple)
             await self.blink(red, green, blue)
 
