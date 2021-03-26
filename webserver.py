@@ -55,7 +55,6 @@ class LightSocket:
         self.loop.run_forever()
 
     async def lights(self, websocket, path):
-        print("hello")
         command = await websocket.recv()
         if command == "off":
             board.off_switch = True
