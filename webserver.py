@@ -43,7 +43,7 @@ class LightSocket:
     def __init__(self, host: str, port: int, board: Board):
         self.host = host
         self.port = port
-        self.run_server = websockets.server(self.lights, self.host, self.port)
+        self.run_server = websockets.serve(self.lights, self.host, self.port)
         self.board = board
         self.loop = asyncio.get_event_loop()
 
