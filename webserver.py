@@ -43,15 +43,15 @@ class LightSocket:
     def __init__(self, host: str, port: int, board: Board):
         self.host = host
         self.port = port
+        self.run_server = websockets.server(self.lights, self.host, self.port)
         self.board = board
         self.loop = asyncio.get_event_loop()
 
         self.start()
 
     def start(self):
-        run_server = websockets.server(self.host, self.port)
         asyncio.ensure_future(self.board.execute_current_action())
-        self.loop.run_until_complete(run_server)
+        self.loop.run_until_complete(self.start_server)
         self.loop.run_forever()
 
     async def lights(websocket, path):
