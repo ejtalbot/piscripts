@@ -51,7 +51,7 @@ class LightSocket:
 
     def start(self):
         asyncio.ensure_future(self.board.execute_current_action())
-        self.loop.run_until_complete(self.start_server)
+        self.loop.run_until_complete(self.run_server)
         self.loop.run_forever()
 
     async def lights(websocket, path):
