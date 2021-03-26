@@ -88,7 +88,6 @@ class Board:
             self.pixels.show()
             await asyncio.sleep(0.1)
         self.turn_off_all_pixels()
-        print("turned off all pixels")
 
     async def blink_pattern(self):
         for pixel_rgb_tuple in self.active_snake.pattern:
