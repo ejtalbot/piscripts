@@ -39,23 +39,40 @@ board.set_active_snake("rainbow")
 board.set_action("multicolor_snake")
 
 
-async def lights(websocket, path):
-    command = await websocket.recv()
-    if command == "off":
-        board.off_switch = True
-    if command in ["rainbow", "purple_pink", "hot", "cool"]:
-        board.set_active_snake(command)
-    if command in ["subset_color_wheel", "multicolor_snake", "blink_pattern"]:
-        board.set_action(command)
+class LightSocket:
+    def __init__(self, host: str, port: int, board: Board):
+        self.host = host
+        self.port = port
+        self.run_server = websockets.server(self.host, self.port)
+        self.board = board
+        self.loop = asyncio.get_event_loop()
 
-    await websocket.send(f"processing command {command}")
+        self.start()
+
+    def start(self):
+        asyncio.ensure_future(self.board.execute_current_action())
+        self.loop.run_until_complete(self.start_server)
+        self.loop.run_forever()
+
+    async def lights(websocket, path):
+        command = await websocket.recv()
+        if command == "off":
+            board.off_switch = True
+        if command in ["rainbow", "purple_pink", "hot", "cool"]:
+            board.set_active_snake(command)
+        if command in ["subset_color_wheel", "multicolor_snake", "blink_pattern"]:
+            board.set_action(command)
+
+        await websocket.send(f"processing command {command}")
 
 
-start_server = websockets.serve(lights, "0.0.0.0", 8765)
+LightSocket(board)
+
+# start_server = websockets.serve(lights, "0.0.0.0", 8765)
 # asyncio.ensure_future(board.multicolor_snake(crawl_length=5))
-asyncio.ensure_future(board.execute_current_action())
-loop = asyncio.get_event_loop()
-loop.run_until_complete(start_server)
-loop.run_forever()
+# asyncio.ensure_future(board.execute_current_action())
+# loop = asyncio.get_event_loop()
+# loop.run_until_complete(start_server)
+# loop.run_forever()
 
 # TODO keep going based on command
