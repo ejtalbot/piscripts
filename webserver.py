@@ -66,7 +66,7 @@ class LightSocket:
         await websocket.send(f"processing command {command}")
 
 
-LightSocket(board)
+LightSocket("0.0.0.0", 8765, board)
 
 # start_server = websockets.serve(lights, "0.0.0.0", 8765)
 # asyncio.ensure_future(board.multicolor_snake(crawl_length=5))
