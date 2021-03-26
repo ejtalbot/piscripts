@@ -91,6 +91,11 @@ class Board:
         await asyncio.sleep(1)
         print("turned off all pixels")
 
+    async def blink_pattern(self):
+        for pixel_rgb_tuple in range(self.active_snake.pattern):
+            red, green, blue = rgb_tuple_split(pixel_rgb_tuple)
+            await self.blink(red, green, blue)
+
     def offset_light(self, offset: int, start: int, red: int, green: int, blue: int):
         for pixel_number in range(
             start, self.max_step(start, self.count, offset), offset
