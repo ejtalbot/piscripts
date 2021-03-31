@@ -86,7 +86,7 @@ class Board:
         for pixel_number in range(self.count):
             self.set_pixel_color(pixel_number, red, green, blue)
             self.pixels.show()
-            await asyncio.sleep(0.1)
+            await asyncio.sleep(0.02)
         self.turn_off_all_pixels()
 
     async def blink_pattern(self):
