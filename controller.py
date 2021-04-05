@@ -199,7 +199,7 @@ class Board:
             time.sleep(0.1)
 
     # @interrupt
-    async def multicolor_snake(self, crawl_length: int = 60):
+    async def multicolor_snake(self, crawl_length: int = 120):
         for background_rgb in self.active_snake.pattern_base:
             # can comment if snake fills entire
             self.set_range_of_pixels(
