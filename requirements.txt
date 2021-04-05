@@ -1,2 +1,3 @@
 RPi.GPIO==0.7.0
 click==7.1.2
+webcosckets==8.1
