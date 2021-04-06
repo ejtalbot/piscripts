@@ -212,7 +212,12 @@ class Board:
                 background_red, background_green, background_blue = rgb_tuple_split(
                     background_rgb
                 )
-                self.set_pixel_color(self.active_snake.start, 0, 0, 0)
+                self.set_pixel_color(
+                    self.active_snake.start,
+                    background_red,
+                    background_green,
+                    background_blue,
+                )
                 self.active_snake.move(1)
                 self.active_snake.iteration(self.move_pattern)
                 self.pixels.show()
