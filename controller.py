@@ -205,7 +205,7 @@ class Board:
             self.set_range_of_pixels(
                 self.active_snake.start,
                 self.active_snake.start + len(self.active_snake.pattern),
-                tuple((0, 0, 0)),
+                rgb_tuple_split(background_rgb),
                 inside=False,
             )
             for i in range(crawl_length):
