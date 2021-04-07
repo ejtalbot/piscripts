@@ -163,9 +163,13 @@ class Board:
             red_max, green_max, blue_max = rgb_tuple_split(rgb)
             for step in range(fade_steps):
                 current_pixel = self.pixels[0]
-                red = int(min(255, current_pixel[0] + red_max / fade_steps * step))
-                green = int(min(255, current_pixel[1] + green_max / fade_steps * step))
-                blue = int(min(255, current_pixel[2] + blue_max / fade_steps * step))
+                red = int(min(red_max, current_pixel[0] + red_max / fade_steps * step))
+                green = int(
+                    min(green_max, current_pixel[1] + green_max / fade_steps * step)
+                )
+                blue = int(
+                    min(blue_max, current_pixel[2] + blue_max / fade_steps * step)
+                )
                 print(f"{step} - increase step - {red} {green} {blue}")
                 for pixel_number in range(self.count):
                     self.set_pixel_color(pixel_number, red, green, blue)
