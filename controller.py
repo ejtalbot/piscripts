@@ -85,9 +85,10 @@ class Board:
     async def blink(self, red: int, green: int, blue: int):
         for pixel_number in range(self.count):
             self.set_pixel_color(pixel_number, red, green, blue)
-            self.pixels.show()
-            await asyncio.sleep(0.02)
+        self.pixels.show()
+        await asyncio.sleep(0.01)
         self.turn_off_all_pixels()
+        await asyncio.sleep(0.01)
 
     async def blink_pattern(self):
         for pixel_rgb_tuple in self.active_snake.pattern:
@@ -155,6 +156,29 @@ class Board:
             self.pixels.show()
             time.sleep(0.5)
 
+    async def fader(self):
+        fade_steps = 20
+        for rgb in self.active_snake.pattern:
+            red_max, green_max, blue_max = rgb_tuple_split(rgb)
+            for step in range(fade_steps):
+                current_pixel = self.pixels[0]
+                red = min(255, current_pixel[0] + red_max / fade_steps * step)
+                green = min(255, current_pixel[1] + green_max / fade_steps * step)
+                blue = min(255, current_pixel[2] + blue_max / fade_steps * step)
+                for pixel_number in range(self.count):
+                    self.set_pixel_color(pixel_number, red, green, blue)
+                self.pixels.show()
+                asyncio.sleep(0.05)
+            for step in range(fade_steps):
+                current_pixel = self.pixels[0]
+                red = max(0, current_pixel[0] - red_max / fade_steps * step)
+                green = max(0, current_pixel[1] - green_max / fade_steps * step)
+                blue = max(0, current_pixel[2] - blue_max / fade_steps * step)
+                for pixel_number in range(self.count):
+                    self.set_pixel_color(pixel_number, red, green, blue)
+                self.pixels.show()
+                asyncio.sleep(0.05)
+
     def full_color_wheel(self):
         color_dict_list = read_to_dict_list("resources/colors.csv")
         color_tuples = [tuple(color["rgb"].split(",")) for color in color_dict_list]
@@ -221,7 +245,7 @@ class Board:
                 self.active_snake.move(1)
                 self.active_snake.iteration(self.move_pattern)
                 self.pixels.show()
-                await asyncio.sleep(0.05)
+                await asyncio.sleep(0.02)
 
     def light_all_off_pixels(self, rgb: Tuple[int, int, int] = (255, 255, 255)):
         for pixel_number, pixel in enumerate(self.pixels):
