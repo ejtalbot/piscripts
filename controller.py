@@ -157,15 +157,13 @@ class Board:
             time.sleep(0.5)
 
     async def fader(self):
-        fade_steps = 20
+        fade_steps = 100
         for rgb in self.active_snake.pattern:
-            print(rgb)
             red_max, green_max, blue_max = rgb_tuple_split(rgb)
             for step in range(fade_steps):
                 red = int(min(red_max, red_max / fade_steps * step))
                 green = int(min(green_max, green_max / fade_steps * step))
                 blue = int(min(blue_max, blue_max / fade_steps * step))
-                print(f"{step} - increase step - {red} {green} {blue}")
                 for pixel_number in range(self.count):
                     self.set_pixel_color(pixel_number, red, green, blue)
                 self.pixels.show()
@@ -174,7 +172,6 @@ class Board:
                 red = int(max(0, red_max / fade_steps * step))
                 green = int(max(0, green_max / fade_steps * step))
                 blue = int(max(0, blue_max / fade_steps * step))
-                print(f"{step} - lower step - {red} {green} {blue}")
                 for pixel_number in range(self.count):
                     self.set_pixel_color(pixel_number, red, green, blue)
                 self.pixels.show()
