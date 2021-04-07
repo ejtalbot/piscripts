@@ -162,24 +162,18 @@ class Board:
             print(rgb)
             red_max, green_max, blue_max = rgb_tuple_split(rgb)
             for step in range(fade_steps):
-                current_pixel = self.pixels[0]
-                red = int(min(red_max, current_pixel[0] + red_max / fade_steps * step))
-                green = int(
-                    min(green_max, current_pixel[1] + green_max / fade_steps * step)
-                )
-                blue = int(
-                    min(blue_max, current_pixel[2] + blue_max / fade_steps * step)
-                )
+                red = int(min(red_max, red_max / fade_steps * step))
+                green = int(min(green_max, green_max / fade_steps * step))
+                blue = int(min(blue_max, blue_max / fade_steps * step))
                 print(f"{step} - increase step - {red} {green} {blue}")
                 for pixel_number in range(self.count):
                     self.set_pixel_color(pixel_number, red, green, blue)
                 self.pixels.show()
                 await asyncio.sleep(0.1)
-            for step in range(fade_steps):
-                current_pixel = self.pixels[0]
-                red = int(max(0, current_pixel[0] - red_max / fade_steps * step))
-                green = int(max(0, current_pixel[1] - green_max / fade_steps * step))
-                blue = int(max(0, current_pixel[2] - blue_max / fade_steps * step))
+            for step in reversed(range(fade_steps)):
+                red = int(max(0, red_max / fade_steps * step))
+                green = int(max(0, green_max / fade_steps * step))
+                blue = int(max(0, blue_max / fade_steps * step))
                 print(f"{step} - lower step - {red} {green} {blue}")
                 for pixel_number in range(self.count):
                     self.set_pixel_color(pixel_number, red, green, blue)
