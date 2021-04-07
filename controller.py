@@ -159,25 +159,28 @@ class Board:
     async def fader(self):
         fade_steps = 20
         for rgb in self.active_snake.pattern:
+            print(rgb)
             red_max, green_max, blue_max = rgb_tuple_split(rgb)
             for step in range(fade_steps):
                 current_pixel = self.pixels[0]
                 red = int(min(255, current_pixel[0] + red_max / fade_steps * step))
                 green = int(min(255, current_pixel[1] + green_max / fade_steps * step))
                 blue = int(min(255, current_pixel[2] + blue_max / fade_steps * step))
+                print(f"{step} - increase step - {red} {green} {blue}")
                 for pixel_number in range(self.count):
                     self.set_pixel_color(pixel_number, red, green, blue)
                 self.pixels.show()
-                await asyncio.sleep(0.05)
+                await asyncio.sleep(0.1)
             for step in range(fade_steps):
                 current_pixel = self.pixels[0]
                 red = int(max(0, current_pixel[0] - red_max / fade_steps * step))
                 green = int(max(0, current_pixel[1] - green_max / fade_steps * step))
                 blue = int(max(0, current_pixel[2] - blue_max / fade_steps * step))
+                print(f"{step} - lower step - {red} {green} {blue}")
                 for pixel_number in range(self.count):
                     self.set_pixel_color(pixel_number, red, green, blue)
                 self.pixels.show()
-                await asyncio.sleep(0.05)
+                await asyncio.sleep(0.1)
 
     def full_color_wheel(self):
         color_dict_list = read_to_dict_list("resources/colors.csv")
