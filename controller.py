@@ -168,7 +168,7 @@ class Board:
                 for pixel_number in range(self.count):
                     self.set_pixel_color(pixel_number, red, green, blue)
                 self.pixels.show()
-                asyncio.sleep(0.05)
+                await asyncio.sleep(0.05)
             for step in range(fade_steps):
                 current_pixel = self.pixels[0]
                 red = int(max(0, current_pixel[0] - red_max / fade_steps * step))
@@ -177,7 +177,7 @@ class Board:
                 for pixel_number in range(self.count):
                     self.set_pixel_color(pixel_number, red, green, blue)
                 self.pixels.show()
-                asyncio.sleep(0.05)
+                await asyncio.sleep(0.05)
 
     def full_color_wheel(self):
         color_dict_list = read_to_dict_list("resources/colors.csv")
