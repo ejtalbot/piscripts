@@ -36,7 +36,7 @@ board.add_snake(
 board.add_snake("cool", cool_colors, lengthen_sequence_by=4, reverse=False)
 board.add_snake("hot", hot_colors, lengthen_sequence_by=2, reverse=False)
 board.set_active_snake("rainbow")
-board.set_action("multicolor_snake")
+board.set_action("subset_color_wheel")
 
 
 class LightSocket:
