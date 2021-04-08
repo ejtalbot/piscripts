@@ -86,9 +86,9 @@ class Board:
         for pixel_number in range(self.count):
             self.set_pixel_color(pixel_number, red, green, blue)
         self.pixels.show()
-        await asyncio.sleep(0.01)
+        await asyncio.sleep(0.1)
         self.turn_off_all_pixels()
-        await asyncio.sleep(0.01)
+        await asyncio.sleep(0.1)
 
     async def blink_pattern(self):
         for pixel_rgb_tuple in self.active_snake.pattern:
@@ -167,7 +167,7 @@ class Board:
                 for pixel_number in range(self.count):
                     self.set_pixel_color(pixel_number, red, green, blue)
                 self.pixels.show()
-                await asyncio.sleep(0.1)
+                await asyncio.sleep(0.01)
             for step in reversed(range(fade_steps)):
                 red = int(max(0, red_max / fade_steps * step))
                 green = int(max(0, green_max / fade_steps * step))
@@ -175,7 +175,7 @@ class Board:
                 for pixel_number in range(self.count):
                     self.set_pixel_color(pixel_number, red, green, blue)
                 self.pixels.show()
-                await asyncio.sleep(0.1)
+                await asyncio.sleep(0.01)
 
     def full_color_wheel(self):
         color_dict_list = read_to_dict_list("resources/colors.csv")
@@ -304,6 +304,11 @@ class Board:
         # snake_2_head = snake_2_tail - len(snake_2)
         # set lights in range for snake2
         #
+
+
+def decorator_for_refresh():
+    pass
+    # todo how often to check the off button
 
 
 def rainbow_snake_background_cycle():
