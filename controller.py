@@ -17,7 +17,7 @@ from utils.decorators import interrupt
 
 
 class Board:
-    def __init__(self, gpio: str = "D18", count: int = 120):
+    def __init__(self, gpio: str = "D18", count: int = 300):
         self.gpio = gpio
         self.count = count
         self.pixels = neopixel.NeoPixel(

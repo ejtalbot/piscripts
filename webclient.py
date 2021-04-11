@@ -4,7 +4,7 @@ import websockets
 
 
 async def send_message():
-    uri = "ws://192.168.0.126:8765"
+    uri = "ws://192.168.0.150:8765"
     async with websockets.connect(uri, ping_interval=None) as websocket:
         command = input("Enter input")
 
