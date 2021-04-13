@@ -1,5 +1,6 @@
 #NOOBS
 NOOBS_v3_5_1.zip
+config/wpa_supplicant.conf
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

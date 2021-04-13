@@ -24,3 +24,7 @@ sdcardpath="/$(mount | grep -i sdb1 | grep -oE "media[^ ]+")"
 sudo unzip NOOBS_v3_5_1.zip -d $sdcardpath
 
 sudo rm -rf "${sdcardpath}/os/LibreELEC_RPi"*
+
+sudo touch "${sdcardpath}/ssh"
+sudo cp config/wpa_supplicant.conf "${sdcardpath}"
+sudo sed -i '$s/$/ silentinstall/' "${sdcardpath}/recovery.cmdline" > "${sdcardpath}/recovery.cmdline"
