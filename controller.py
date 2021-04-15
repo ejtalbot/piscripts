@@ -257,7 +257,7 @@ class Board:
             )
             self.set_pixel_color(pixel_number, red, green, blue)
         self.pixels.show()
-        await asyncio.sleep(random_step * 0.1)
+        await asyncio.sleep(random_step * 0.1 + 0.1)
 
     def light_all_off_pixels(self, rgb: Tuple[int, int, int] = (255, 255, 255)):
         for pixel_number, pixel in enumerate(self.pixels):
