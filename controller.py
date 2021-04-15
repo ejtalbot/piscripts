@@ -1,5 +1,6 @@
 import asyncio
 import time
+from random import randint
 from typing import List, Tuple
 
 import board
@@ -244,6 +245,19 @@ class Board:
                 self.active_snake.iteration(self.move_pattern)
                 self.pixels.show()
                 await asyncio.sleep(0.02)
+
+    async def random_walk(self):
+        random_step = randint(-2, 2)
+        for pixel_number in range(self.count):
+            color_position = abs(
+                (pixel_number + random_step) % len(self.active_snake.pattern)
+            )
+            red, green, blue = rgb_tuple_split(
+                self.active_snake.pattern[color_position]
+            )
+            self.set_pixel_color(pixel_number, red, green, blue)
+        self.pixels.show()
+        await asyncio.sleep(0.08)
 
     def light_all_off_pixels(self, rgb: Tuple[int, int, int] = (255, 255, 255)):
         for pixel_number, pixel in enumerate(self.pixels):
