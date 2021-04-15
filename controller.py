@@ -17,7 +17,7 @@ from utils.decorators import interrupt
 
 
 class Board:
-    def __init__(self, gpio: str = "D18", count: int = 300):
+    def __init__(self, gpio: str = "D18", count: int = 60):
         self.gpio = gpio
         self.count = count
         self.pixels = neopixel.NeoPixel(
@@ -201,7 +201,7 @@ class Board:
             self.set_pixel_color(pixel_number, red, green, blue)
         self.pixels.show()
         self.active_snake.counter += 1
-        await asyncio.sleep(0.08)
+        await asyncio.sleep(0.01)
 
     def snake(self, color: Tuple[str, str, str], length: int):
         red, green, blue = rgb_tuple_split(color)
