@@ -1,6 +1,6 @@
 import asyncio
 import time
-from random import randint
+from random import choice
 from typing import List, Tuple
 
 import board
@@ -247,7 +247,7 @@ class Board:
                 await asyncio.sleep(0.02)
 
     async def random_walk(self):
-        random_step = randint(-2, 2)
+        random_step = choice([-2, -1, 1, 2])
         for pixel_number in range(self.count):
             color_position = abs(
                 (pixel_number + random_step) % len(self.active_snake.pattern)
