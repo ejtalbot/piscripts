@@ -82,6 +82,14 @@ class Board:
         print("turn off all pixels")
         self.turn_off_all_pixels()
 
+    async def oneline(self, red: int, green: int, blue: int):
+        for pixel_rgb_tuple in self.active_snake.pattern:
+            red, green, blue = rgb_tuple_split(pixel_rgb_tuple)
+            for pixel_number in range(self.count):
+                self.set_pixel_color(pixel_number, red, green, blue)
+                self.pixels.show()
+                asyncio.sleep(0.1)
+
     # @interrupt
     async def blink(self, red: int, green: int, blue: int):
         for pixel_number in range(self.count):
