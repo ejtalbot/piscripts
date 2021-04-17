@@ -29,12 +29,12 @@ cool_names = ["aquamarine", "teal", "blue", "violet"]
 cool_colors = create_color_pattern_by_name(cool_names)
 
 
-board.add_snake("rainbow", rainbow_colors, lengthen_sequence_by=2, reverse=False)
+board.add_snake("rainbow", rainbow_colors, lengthen_sequence_by=12, reverse=False)
 board.add_snake(
     "purple_pink", purple_pink_colors, lengthen_sequence_by=3, reverse=False
 )
 board.add_snake("cool", cool_colors, lengthen_sequence_by=4, reverse=False)
-board.add_snake("hot", hot_colors, lengthen_sequence_by=2, reverse=False)
+board.add_snake("hot", hot_colors, lengthen_sequence_by=8, reverse=False)
 board.set_active_snake("rainbow")
 board.set_action("randblink")
 
