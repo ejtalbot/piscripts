@@ -1,6 +1,6 @@
 import asyncio
 import time
-from random import randint
+from random import getrandbits, randint
 from typing import List, Tuple
 
 import board
@@ -302,22 +302,14 @@ class Board:
     def set_active_snake(self, snake_name):
         self.active_snake = self.snakes.get(snake_name)
 
-    def opposite_whirl(
-        self, snake_1: List[Tuple[str, str, str]], snake_2: List[Tuple[str, str, str]]
-    ):
-        pass
-        # snake_1
-        # snake_2
-        # start snake1 at beginning
-        # snake_1_tail = 0
-        # snake_1_head = len(snake_1)
-        # set lights in range for snake1
-        # increment like ranbow
-        # start snake2 at end
-        # snake_2_tail = self.count - 1
-        # snake_2_head = snake_2_tail - len(snake_2)
-        # set lights in range for snake2
-        #
+    async def randblink(self):
+        for pixel_rgb_tuple in self.active_snake.pattern:
+            red, green, blue = rgb_tuple_split(pixel_rgb_tuple)
+            for pixel_number in range(self.count):
+                if getrandbits(1):
+                    self.set_pixel_color(pixel_number, green, blue)
+            self.pixels.show()
+            await asyncio.sleep(1)
 
 
 def decorator_for_refresh():
