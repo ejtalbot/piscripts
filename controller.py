@@ -88,7 +88,7 @@ class Board:
             for pixel_number in range(self.count):
                 self.set_pixel_color(pixel_number, red, green, blue)
                 self.pixels.show()
-                asyncio.sleep(0.1)
+                await asyncio.sleep(0.1)
 
     # @interrupt
     async def blink(self, red: int, green: int, blue: int):
