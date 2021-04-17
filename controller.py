@@ -307,7 +307,7 @@ class Board:
             red, green, blue = rgb_tuple_split(pixel_rgb_tuple)
             for pixel_number in range(self.count):
                 if getrandbits(1):
-                    self.set_pixel_color(pixel_number, green, blue)
+                    self.set_pixel_color(pixel_number, red, green, blue)
             self.pixels.show()
             await asyncio.sleep(1)
 
