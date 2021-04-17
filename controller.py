@@ -83,7 +83,7 @@ class Board:
         self.turn_off_all_pixels()
 
     async def oneline(self):
-        for pixel_rgb_tuple in self.active_snake.pattern:
+        for pixel_rgb_tuple in self.active_snake.pattern_base:
             red, green, blue = rgb_tuple_split(pixel_rgb_tuple)
             for pixel_number in range(self.count):
                 self.set_pixel_color(pixel_number, red, green, blue)
