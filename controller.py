@@ -82,7 +82,7 @@ class Board:
         print("turn off all pixels")
         self.turn_off_all_pixels()
 
-    async def oneline(self, red: int, green: int, blue: int):
+    async def oneline(self):
         for pixel_rgb_tuple in self.active_snake.pattern:
             red, green, blue = rgb_tuple_split(pixel_rgb_tuple)
             for pixel_number in range(self.count):
