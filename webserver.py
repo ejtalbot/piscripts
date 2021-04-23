@@ -68,6 +68,7 @@ class LightSocket:
             "random_walk",
             "randblink",
             "oneline",
+            "rand_one_by_one",
         ]:
             board.set_action(command)
 
