@@ -1,0 +1,5 @@
+cd repos/piscripts
+
+source pienv/bin/activate
+
+sudo python3 webserver.py
