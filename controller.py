@@ -1,6 +1,6 @@
 import asyncio
 import time
-from random import getrandbits, randint
+from random import choice, getrandbits, randint
 from typing import List, Tuple
 
 import board
@@ -318,6 +318,20 @@ class Board:
                     self.set_pixel_color(pixel_number, red, green, blue)
             self.pixels.show()
             await asyncio.sleep(1)
+
+    async def rand_one_by_one(self):
+        pixel_range = range(0, self.count)
+        for pixel_rgb_tuple in self.active_snake.pattern_base:
+            red, green, blue = rgb_tuple_split(pixel_rgb_tuple)
+            included_list = [*pixel_range]
+            for count in range(self.count):
+                rand_pixel = choice(included_list)
+                included_list.remove(rand_pixel)
+                self.set_pixel_color(rand_pixel, red, green, blue)
+                self.pixels.show()
+                await asyncio.sleep(1)
+        if len(self.active_snake.pattern_base) == 1:
+            self.turn_off_all_pixels()
 
 
 def decorator_for_refresh():

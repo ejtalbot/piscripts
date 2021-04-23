@@ -1,5 +1,5 @@
-from typing import List, Tuple
 import os
+from typing import List, Tuple
 
 from .csv_handler import read_to_color_name_dict
 
