@@ -353,15 +353,12 @@ class Board:
             for final_pixel in reversed(range(0, self.count)):
                 for pixel_number in range(0, final_pixel + 1):
                     initial_pixel_color = self.get_pixel_color(pixel_number)
-                    print(initial_pixel_color)
-                    print(type(initial_pixel_color))
-                    print(type(initial_pixel_color[0]))
                     initial_red, initial_green, initial_blue = rgb_tuple_split(
                         initial_pixel_color
                     )
                     self.set_pixel_color(pixel_number, red, green, blue)
                     self.pixels.show()
-                    await asyncio.sleep(0.02)
+                    await asyncio.sleep(0.005)
                     if pixel_number != final_pixel:
                         self.set_pixel_color(
                             pixel_number, initial_red, initial_green, initial_blue
