@@ -3,10 +3,10 @@ import asyncio
 import websockets
 
 from controller import Board
-from utils.conversions import create_color_pattern_by_name
 
 board = Board()
 
+"""
 # snakes
 rainbow_color_names = [
     "red",
@@ -35,6 +35,7 @@ board.add_snake(
 )
 board.add_snake("cool", cool_colors, lengthen_sequence_by=4, reverse=False)
 board.add_snake("hot", hot_colors, lengthen_sequence_by=8, reverse=False)
+"""
 board.set_active_snake("rainbow")
 board.set_action("subset_color_wheel")
 
