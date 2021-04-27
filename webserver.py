@@ -71,6 +71,7 @@ class LightSocket:
             "oneline",
             "rand_one_by_one",
             "mid_meet",
+            "end_to_end",
         ]:
             board.set_action(command)
 
