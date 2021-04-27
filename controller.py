@@ -338,7 +338,7 @@ class Board:
     async def mid_meet(self):
         for pixel_rgb_tuple in self.active_snake.pattern_base:
             red, green, blue = rgb_tuple_split(pixel_rgb_tuple)
-            for pixel_number in range(0, self.count / 2):
+            for pixel_number in range(0, self.count // 2):
                 left_pixel = pixel_number
                 right_pixel = self.count - pixel_number
                 self.set_pixel_color(left_pixel, red, green, blue)
