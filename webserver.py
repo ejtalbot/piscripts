@@ -70,6 +70,7 @@ class LightSocket:
             "randblink",
             "oneline",
             "rand_one_by_one",
+            "mid_meet",
         ]:
             board.set_action(command)
 
