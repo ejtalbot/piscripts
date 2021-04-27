@@ -345,7 +345,7 @@ class Board:
                 self.set_pixel_color(left_pixel, red, green, blue)
                 self.set_pixel_color(right_pixel, red, green, blue)
                 self.pixels.show()
-                await asyncio.sleep(0.1)
+                await asyncio.sleep(0.02)
 
 
 def decorator_for_refresh():
