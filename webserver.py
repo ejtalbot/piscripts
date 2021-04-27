@@ -76,8 +76,8 @@ class LightSocket:
         ]:
             board.set_action(command)
         if command == "stop":
-            print("stopping")
             self.loop.stop()
+            self.board.turn_off_all_pixels()
 
 
 LightSocket("0.0.0.0", 8765, board)
