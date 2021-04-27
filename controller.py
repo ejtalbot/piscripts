@@ -59,9 +59,7 @@ class Board:
 
     def set_action(self, func):
         if callable(getattr(self, func, None)):
-            print(f"success fun {func}")
             self.current_action = func
-        print(f"fun {func}")
 
     def set_initial_snakes(self):
         for snake_name, color_name_pattern in snake_templates.items():
