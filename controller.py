@@ -29,6 +29,8 @@ class Board:
         self.active_snake = None
         self.current_action = ""
 
+        self.set_initial_snakes()
+
     def set_pixel_color(self, pixel_number: int, red: int, green: int, blue: int):
         if any(not (0 <= color <= 255) for color in {red, green, blue}):
             print(f"invalid color outside rgb range: ({red, green, blue})")
@@ -57,7 +59,9 @@ class Board:
 
     def set_action(self, func):
         if callable(getattr(self, func, None)):
+            print(f"success fun {func}")
             self.current_action = func
+        print(f"fun {func}")
 
     def set_initial_snakes(self):
         for snake_name, color_name_pattern in snake_templates.items():
