@@ -57,6 +57,7 @@ class LightSocket:
 
     async def lights(self, websocket, path):
         command = await websocket.recv()
+        await websocket.send(f"processing command {command}")
         if command == "off":
             board.off_switch = True
         if command in ["rainbow", "purple_pink", "hot", "cool"]:
@@ -74,8 +75,9 @@ class LightSocket:
             "end_to_end",
         ]:
             board.set_action(command)
-
-        await websocket.send(f"processing command {command}")
+        if command == "stop":
+            print("stopping")
+            self.loop.stop()
 
 
 LightSocket("0.0.0.0", 8765, board)
