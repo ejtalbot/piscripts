@@ -60,9 +60,12 @@ class Snake:
         new_pattern = list()
         current_color = self.pattern[0]
         for color in self.pattern:
+            print(f"color: {color}")
             if color != current_color:
+                print(f"change_color: {color}")
                 new_pattern.append(current_color)
                 current_color = color
             else:
+                print("same")
                 new_pattern.append(color)
         self.pattern = new_pattern
