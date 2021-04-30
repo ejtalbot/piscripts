@@ -56,7 +56,7 @@ class Snake:
     def reset_length(self):
         self.pattern = self.pattern_base
 
-    def increase_pattern(self, multiplier: int):
+    def increase_pattern(self, additions: int = 1):
         new_pattern = self.pattern[0]
         current_color = self.pattern[0]
         for color in self.pattern:
