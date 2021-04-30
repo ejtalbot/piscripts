@@ -66,7 +66,7 @@ class LightSocket:
             "double_length",
             "reset_length",
             "half_length",
-            "increase_patter",
+            "increase_pattern",
         ]:
             board.change_snake_length(command)
         if command in [

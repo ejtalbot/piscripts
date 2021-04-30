@@ -47,11 +47,11 @@ class Snake:
     def double_length(self):
         self.pattern = lengthen_sequence(self.pattern, 2)
 
-    def half_length(self):
-        if self.pattern == self.pattern_base:
-            print("")
-        else:
-            self.pattern = lengthen_sequence(self.pattern, 0.5)
+    # def half_length(self):
+    #    if self.pattern == self.pattern_base:
+    #        print("")
+    #    else:
+    #        self.pattern = lengthen_sequence(self.pattern, 0.5)
 
     def reset_length(self):
         self.pattern = self.pattern_base
