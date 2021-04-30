@@ -57,7 +57,7 @@ class Snake:
         self.pattern = self.pattern_base
 
     def increase_pattern(self, additions: int = 1):
-        new_pattern = self.pattern[0]
+        new_pattern = list()
         current_color = self.pattern[0]
         for color in self.pattern:
             if color != current_color:
