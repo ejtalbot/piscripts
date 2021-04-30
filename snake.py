@@ -63,7 +63,7 @@ class Snake:
             print(f"color: {color}")
             if color != current_color:
                 print(f"change_color: {color}")
-                new_pattern.append(current_color)
+                new_pattern.extend([current_color, color])
                 print(f"new pattern: {new_pattern}")
                 current_color = color
                 print(f"new current color {current_color}")
