@@ -43,3 +43,26 @@ class Snake:
                 position,
                 pixel if pixel < self.board_length else pixel % self.board_length,
             )
+
+    def double_length(self):
+        self.pattern = lengthen_sequence(self.pattern, 2)
+
+    def half_length(self):
+        if self.pattern == self.pattern_base:
+            print("")
+        else:
+            self.pattern = lengthen_sequence(self.pattern, 0.5)
+
+    def reset_length(self):
+        self.pattern = self.pattern_base
+
+    def increase_pattern(self, multiplier: int):
+        new_pattern = self.pattern[0]
+        current_color = self.pattern[0]
+        for color in self.pattern:
+            if color != current_color:
+                new_pattern.append(current_color)
+                current_color = color
+            else:
+                new_pattern.append(color)
+        self.pattern = new_pattern

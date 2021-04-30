@@ -37,7 +37,7 @@ board.add_snake("cool", cool_colors, lengthen_sequence_by=4, reverse=False)
 board.add_snake("hot", hot_colors, lengthen_sequence_by=8, reverse=False)
 """
 board.set_active_snake("rainbow")
-board.set_action("end_to_end")
+board.set_action("subset_color_wheel")
 
 
 class LightSocket:
@@ -62,6 +62,13 @@ class LightSocket:
             board.off_switch = True
         if command in ["rainbow", "purple_pink", "hot", "cool"]:
             board.set_active_snake(command)
+        if command in [
+            "double_length",
+            "reset_length",
+            "half_length",
+            "increase_patter",
+        ]:
+            board.change_snake_length(command)
         if command in [
             "subset_color_wheel",
             "multicolor_snake",

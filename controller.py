@@ -18,7 +18,7 @@ from utils.decorators import interrupt
 
 
 class Board:
-    def __init__(self, gpio: str = "D18", count: int = 300):
+    def __init__(self, gpio: str = "D18", count: int = 120):
         self.gpio = gpio
         self.count = count
         self.pixels = neopixel.NeoPixel(
@@ -74,6 +74,10 @@ class Board:
         except AttributeError as e:
             print(f"no action set: {e}")
             await asyncio.sleep(10)
+
+    def change_snake_length(self, snake_action: str):
+        resize_method = getattr(self.active_snake, snake_action)
+        resize_method()
 
     async def cycle(self, red: int, green: int, blue: int):
         while not self.off_switch:
